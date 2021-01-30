@@ -1,5 +1,6 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import frc.robot.commands.driveSub.DriveWithController;
 import frc.robot.subsystems.*;
 
@@ -9,6 +10,7 @@ public class RobotContainer {
 
     //Intake Subsystem
     public static IntakeSub intake = new IntakeSub();
+    public Compressor compressor = new Compressor(1);
 
     //Operator Interface
     private static OI oi = new OI();
