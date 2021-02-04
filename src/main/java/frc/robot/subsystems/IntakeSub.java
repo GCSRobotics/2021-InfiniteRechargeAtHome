@@ -8,7 +8,7 @@ import frc.robot.Constants;
 
 public class IntakeSub extends SubsystemBase {
     private static final WPI_VictorSPX IntakeMotor = new WPI_VictorSPX(Constants.IntakeMotor);
-    private static final DoubleSolenoid solenoid = new DoubleSolenoid(Constants.IntakeExtendChannel, Constants.IntakeRetractChannel);
+    private static final DoubleSolenoid solenoid = new DoubleSolenoid(Constants.PCM, Constants.IntakeExtendChannel, Constants.IntakeRetractChannel);
 
     /**
      * Creates a new IntakeSub.
@@ -16,6 +16,7 @@ public class IntakeSub extends SubsystemBase {
     public IntakeSub() {
         addChild("IntakeMotor", IntakeMotor);
         addChild("solenoid", solenoid);
+        solenoid.set(DoubleSolenoid.Value.kReverse);
     }
 
     public void stopIntake() {
@@ -31,10 +32,14 @@ public class IntakeSub extends SubsystemBase {
     }
     
     public void extendIntake() {
-        solenoid.set(DoubleSolenoid.Value.kForward);
+        if (DoubleSolenoid.Value.kReverse == solenoid.get()) {
+            solenoid.toggle();
+        }
     }
 
     public void retractIntake() {
-        solenoid.set(DoubleSolenoid.Value.kReverse);
+        if (DoubleSolenoid.Value.kForward == solenoid.get()) {
+            solenoid.toggle();
+        }
     }
 }

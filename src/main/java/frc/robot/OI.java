@@ -42,8 +42,8 @@ public class OI {
       // Operator buttons.
       // OperatorControl.ButtonA.whileHeld(new AutoCenterStart(RobotContainer.Drive, 120, RobotContainer.ShooterLeft, RobotContainer.ShooterRight, RobotContainer.Indexer));
       // OperatorControl.ButtonY.whileHeld(new StartShooter(RobotContainer.Shooter));
-       OperatorControl.ButtonR1.whileHeld(new RunIntake(RobotContainer.intake));
-       OperatorControl.ButtonL1.whileHeld(new ReverseIntake(RobotContainer.intake));
+      //  OperatorControl.ButtonR1.whileHeld(new RunIntake(RobotContainer.intake));
+      //  OperatorControl.ButtonL1.whileHeld(new ReverseIntake(RobotContainer.intake));
       // OperatorControl.ButtonB.whileHeld(new RunIndex(RobotContainer.Indexer));
       // OperatorControl.ButtonX.whileHeld(new ReverseIndex(RobotContainer.Indexer));
       // OperatorControl.ButtonX.whenPressed(new DriveStraight(RobotContainer.Drive, 120.0));
