@@ -17,8 +17,6 @@ public class IndexSub extends SubsystemBase {
     
     public IndexSub () {
         addChild("IndexMotor", indexMotor);
-        addChild("colorSensor", colorSensor);
-        addChild("colorMatcher", colorMatcher);
         colorMatcher.addColorMatch(Constants.YellowTarget);    
     }
 
