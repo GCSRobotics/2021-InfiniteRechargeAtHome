@@ -36,14 +36,16 @@ public class OI {
       // Driver buttons.
       // DriverControl.ButtonY.whileHeld(new OpenClimber(RobotContainer.Climber));
       // DriverControl.ButtonX.whileHeld(new Climb(RobotContainer.Climber));
-        DriverControl.ButtonY.whenPressed(new ExtendIntake(RobotContainer.intake));
-        DriverControl.ButtonA.whenPressed(new RetractIntake(RobotContainer.intake));
+      // DriverControl.ButtonY.whenPressed(new ExtendIntake(RobotContainer.intake));
+      // DriverControl.ButtonA.whenPressed(new RetractIntake(RobotContainer.intake));
+      DriverControl.ButtonX.whileHeld(new RunIntake(RobotContainer.intake));
+      DriverControl.ButtonB.whileHeld(new ReverseIntake(RobotContainer.intake));
 
       // Operator buttons.
       // OperatorControl.ButtonA.whileHeld(new AutoCenterStart(RobotContainer.Drive, 120, RobotContainer.ShooterLeft, RobotContainer.ShooterRight, RobotContainer.Indexer));
       // OperatorControl.ButtonY.whileHeld(new StartShooter(RobotContainer.Shooter));
-      //  OperatorControl.ButtonR1.whileHeld(new RunIntake(RobotContainer.intake));
-      //  OperatorControl.ButtonL1.whileHeld(new ReverseIntake(RobotContainer.intake));
+      // OperatorControl.ButtonR1.whileHeld(new RunIntake(RobotContainer.intake));
+      // OperatorControl.ButtonL1.whileHeld(new ReverseIntake(RobotContainer.intake));
       // OperatorControl.ButtonB.whileHeld(new RunIndex(RobotContainer.Indexer));
       // OperatorControl.ButtonX.whileHeld(new ReverseIndex(RobotContainer.Indexer));
       // OperatorControl.ButtonX.whenPressed(new DriveStraight(RobotContainer.Drive, 120.0));
