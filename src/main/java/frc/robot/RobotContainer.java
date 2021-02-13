@@ -12,6 +12,12 @@ public class RobotContainer {
     public static IntakeSub intake = new IntakeSub();
     public Compressor compressor = new Compressor(1);
 
+    //Index Subsystem
+    public static IndexSub indexer = new IndexSub();
+
+    //Shooter Subsystems
+    public static ShooterSub shooter = new ShooterSub();
+
     //Operator Interface
     private static OI oi = new OI();
 
