@@ -1,5 +1,6 @@
 package frc.robot.subsystems;
 
+import com.revrobotics.CANEncoder;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 
@@ -13,6 +14,10 @@ public class DriveSub extends SubsystemBase {
     private CANSparkMax leftRearMotor = new CANSparkMax(11, MotorType.kBrushless);
     private CANSparkMax rightFrontMotor = new CANSparkMax(12, MotorType.kBrushless);
     private CANSparkMax rightRearMotor = new CANSparkMax(13, MotorType.kBrushless);
+    private CANEncoder leftFrontEncoder = leftFrontMotor.getEncoder();
+    private CANEncoder leftRearEncoder = leftRearMotor.getEncoder();
+    private CANEncoder rightFrontEncoder = rightFrontMotor.getEncoder();
+    private CANEncoder rightRearEncoder = rightRearMotor.getEncoder();
   
     private final SpeedControllerGroup speedControllerGroupLeft = 
         new SpeedControllerGroup(leftFrontMotor, leftRearMotor);

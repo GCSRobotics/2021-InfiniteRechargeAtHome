@@ -43,7 +43,7 @@ public class OI {
       DriverControl.ButtonX.whileHeld(new RunIndex(RobotContainer.indexer));
       DriverControl.ButtonB.whileHeld(new RunShooter(RobotContainer.shooter));
       DriverControl.ButtonR1.whileHeld(new RunIntake(RobotContainer.intake));
-      DriverControl.ButtonR2.whileHeld(new ReverseIntake(RobotContainer.intake));
+//      DriverControl.ButtonR2.whileHeld(new ReverseIntake(RobotContainer.intake));
 
       // Operator buttons.
       // OperatorControl.ButtonA.whileHeld(new AutoCenterStart(RobotContainer.Drive, 120, RobotContainer.ShooterLeft, RobotContainer.ShooterRight, RobotContainer.Indexer));

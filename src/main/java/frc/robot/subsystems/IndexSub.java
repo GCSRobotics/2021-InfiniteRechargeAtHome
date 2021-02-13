@@ -37,7 +37,7 @@ public class IndexSub extends SubsystemBase {
     
     //Index motor backward speed
     public void indexBall(){
-        indexMotor.set(-.7);
+        indexMotor.set(-.33);
     }
     
     //Index motor backward speed

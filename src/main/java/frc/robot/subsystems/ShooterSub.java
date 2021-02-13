@@ -14,13 +14,13 @@ public class ShooterSub extends SubsystemBase{
     public ShooterSub() {
         this.leftShooter.configFactoryDefault();
         this.rightShooter.configFactoryDefault();
-        this.leftShooter.setInverted(true);
-        this.rightShooter.setInverted(false);
+        this.leftShooter.setInverted(false);
+        this.rightShooter.setInverted(true);
     }
 
     public void runShooter() {
-        this.leftShooter.set(ControlMode.PercentOutput, 1);
-        this.rightShooter.set(ControlMode.PercentOutput, 1);
+        this.leftShooter.set(ControlMode.PercentOutput, .6);
+        this.rightShooter.set(ControlMode.PercentOutput, .6);
     }
 
     public void stopShooter() {
