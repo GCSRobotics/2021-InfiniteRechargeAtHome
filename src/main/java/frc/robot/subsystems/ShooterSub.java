@@ -18,7 +18,7 @@ public class ShooterSub extends SubsystemBase{
         this.rightShooter.setInverted(false);
     }
 
-    public void shoot() {
+    public void runShooter() {
         this.leftShooter.set(ControlMode.PercentOutput, 1);
         this.rightShooter.set(ControlMode.PercentOutput, 1);
     }

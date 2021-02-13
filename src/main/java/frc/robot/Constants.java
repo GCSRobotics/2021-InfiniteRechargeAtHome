@@ -9,6 +9,8 @@ public class Constants {
     // Motor Constants
     public final static int IndexMotor = 4;
     public final static int IntakeMotor = 5;
+    public final static int leftShooterMotor = 6;
+    public final static int rightShooterMotor = 7 ;
 
     // Controller 
     public final static int DriveJoystick = 0;
