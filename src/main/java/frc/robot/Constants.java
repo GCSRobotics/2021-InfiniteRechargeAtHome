@@ -25,4 +25,10 @@ public class Constants {
     public final static Color YellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
     public final static I2C.Port i2cPort = I2C.Port.kOnboard;
 
+    public final static double WheelDiameter = 6.00;
+    public final static double DriveGearRatio = 1;//10.75;
+    public final static double NeoEncoderCountsPerRev = 42;
+    public final static double NeoDistancePerPulse = Math.PI * WheelDiameter/DriveGearRatio/NeoEncoderCountsPerRev;
+
+
 }

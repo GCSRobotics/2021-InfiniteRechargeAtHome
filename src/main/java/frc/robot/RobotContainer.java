@@ -1,6 +1,8 @@
 package frc.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.commands.autonomous.AutonomousDistance;
 import frc.robot.commands.driveSub.DriveWithController;
 import frc.robot.subsystems.*;
 
@@ -24,4 +26,8 @@ public class RobotContainer {
     public void setTeleopDefaultCommands() {
         drive.setDefaultCommand(new DriveWithController(drive, oi.GetDriverControl()));
     }
+
+	public static Command GetAutonomousCommand() {
+		return new AutonomousDistance(drive);
+	}
 }

@@ -41,7 +41,7 @@ public class OI {
       DriverControl.ButtonY.whenPressed(new ExtendIntake(RobotContainer.intake));
       DriverControl.ButtonA.whenPressed(new RetractIntake(RobotContainer.intake));
       DriverControl.ButtonX.whileHeld(new RunIndex(RobotContainer.indexer));
-      DriverControl.ButtonB.whileHeld(new RunShooter(RobotContainer.shooter));
+      DriverControl.ButtonL1.whileHeld(new RunShooter(RobotContainer.shooter));
       DriverControl.ButtonR1.whileHeld(new RunIntake(RobotContainer.intake));
 //      DriverControl.ButtonR2.whileHeld(new ReverseIntake(RobotContainer.intake));
 
