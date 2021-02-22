@@ -35,4 +35,9 @@ public class Constants {
     public final static double DriveGearRatio = 1/10.71;  //Tufbox Mini Default Ratio 10.71:1
     public final static double NeoEncoderCountsPerRev = 42;
     public final static double InchesPerMotorRotation = Math.PI * WheelDiameter/DriveGearRatio;    //NeoEncoderCountsPerRev
+
+    public final static int VisionPipeline_HexTarget = 0;
+    public final static int VisionPipeline_Powercell = 1;
+
 }
+
