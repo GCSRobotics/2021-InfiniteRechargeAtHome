@@ -59,10 +59,10 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     autonomousCommand = RobotContainer.GetAutonomousCommand();
 
-       // schedule the autonomous command (example)
-       if (autonomousCommand != null) {
-        autonomousCommand.schedule();
-      }
+    // schedule the autonomous command
+    if (autonomousCommand != null) {
+      autonomousCommand.schedule();
+    }
   }
 
   /** This function is called periodically during autonomous. */

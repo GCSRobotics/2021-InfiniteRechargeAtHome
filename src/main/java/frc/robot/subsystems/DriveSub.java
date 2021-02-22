@@ -13,16 +13,15 @@ import frc.robot.Constants;
 import edu.wpi.first.wpilibj.SPI;
 
 public class DriveSub extends SubsystemBase {
-  private CANSparkMax leftFrontMotor = new CANSparkMax(10, MotorType.kBrushless);
-  private CANSparkMax leftRearMotor = new CANSparkMax(11, MotorType.kBrushless);
-  private CANSparkMax rightFrontMotor = new CANSparkMax(12, MotorType.kBrushless);
-  private CANSparkMax rightRearMotor = new CANSparkMax(13, MotorType.kBrushless);
+  private CANSparkMax leftFrontMotor = new CANSparkMax(Constants.leftFrontDriveMotor, MotorType.kBrushless);
+  private CANSparkMax leftRearMotor = new CANSparkMax(Constants.leftRearDriveMotor, MotorType.kBrushless);
+  private CANSparkMax rightFrontMotor = new CANSparkMax(Constants.RightFrontDriveMotor, MotorType.kBrushless);
+  private CANSparkMax rightRearMotor = new CANSparkMax(Constants.RightRearDriveMotor, MotorType.kBrushless);
+  
   private CANEncoder leftFrontEncoder = leftFrontMotor.getEncoder();
   private CANEncoder leftRearEncoder = leftRearMotor.getEncoder();
   private CANEncoder rightFrontEncoder = rightFrontMotor.getEncoder();
   private CANEncoder rightRearEncoder = rightRearMotor.getEncoder();
-
-
 
   private final SpeedControllerGroup speedControllerGroupLeft = new SpeedControllerGroup(leftFrontMotor, leftRearMotor);
   private final SpeedControllerGroup speedControllerGroupRight = new SpeedControllerGroup(rightFrontMotor, rightRearMotor);
@@ -34,10 +33,10 @@ public class DriveSub extends SubsystemBase {
 
   public DriveSub() {
     // Use inches as unit for encoder distances
-    leftFrontEncoder.setPositionConversionFactor(Constants.NeoDistancePerPulse);
-    rightFrontEncoder.setPositionConversionFactor(Constants.NeoDistancePerPulse);
-    leftRearEncoder.setPositionConversionFactor(Constants.NeoDistancePerPulse);
-    rightRearEncoder.setPositionConversionFactor(Constants.NeoDistancePerPulse);
+    leftFrontEncoder.setPositionConversionFactor(Constants.InchesPerMotorRotation);
+    rightFrontEncoder.setPositionConversionFactor(Constants.InchesPerMotorRotation);
+    leftRearEncoder.setPositionConversionFactor(Constants.InchesPerMotorRotation);
+    rightRearEncoder.setPositionConversionFactor(Constants.InchesPerMotorRotation);
 
     gyro.calibrate();
     resetEncoders();
@@ -47,6 +46,14 @@ public class DriveSub extends SubsystemBase {
     resetEncoders();
   }
 
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+  }
+
+  //********************************************
+  //     DRIVE - Methods to Drive robot
+  //********************************************
   public void arcadeDrive(Joystick joy) {
     double speed = joy.getY() * .01;
     robotDrive.arcadeDrive(speed, joy.getRawAxis(4), true);
@@ -68,15 +75,13 @@ public class DriveSub extends SubsystemBase {
     robotDrive.tankDrive(leftSpeed, rightSpeed, squared);
   }
 
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-  }
-
   public void stop() {
     robotDrive.arcadeDrive(0, 0);
   }
 
+  //********************************************
+  //     ENCODER - Methods to get Encoder Readings
+  //********************************************
   public void resetEncoders() {
     leftFrontEncoder.setPosition(0.0);
     rightFrontEncoder.setPosition(0.0);
@@ -91,10 +96,12 @@ public class DriveSub extends SubsystemBase {
   }
 
   public double getAverageDistanceInch() {
-    return (getLeftDistanceInch());// + getRightDistanceInch()) / 2.0;
+    return (getLeftDistanceInch() + getRightDistanceInch()) / 2.0;
   }
 
-  // There are two outputs from the gyro that we need to create Get methods for
+  //********************************************
+  //     Gyro - Methods to get Gyro Readings
+  //********************************************
   public double getGyroAngle() {
     return gyro.getAngle();
   }

@@ -12,6 +12,11 @@ public class Constants {
     public final static int leftShooterMotor = 6;
     public final static int rightShooterMotor = 7 ;
 
+    public final static int leftFrontDriveMotor = 10;
+    public final static int leftRearDriveMotor = 11;
+    public final static int RightFrontDriveMotor = 12;
+    public final static int RightRearDriveMotor = 13;
+
     // Controller 
     public final static int DriveJoystick = 0;
     public final static int OperatorJoystick = 1;
@@ -25,10 +30,9 @@ public class Constants {
     public final static Color YellowTarget = ColorMatch.makeColor(0.361, 0.524, 0.113);
     public final static I2C.Port i2cPort = I2C.Port.kOnboard;
 
+    // Wheel Distance Calculations
     public final static double WheelDiameter = 6.00;
-    public final static double DriveGearRatio = 1;//10.75;
+    public final static double DriveGearRatio = 1/10.71;  //Tufbox Mini Default Ratio 10.71:1
     public final static double NeoEncoderCountsPerRev = 42;
-    public final static double NeoDistancePerPulse = Math.PI * WheelDiameter/DriveGearRatio/NeoEncoderCountsPerRev;
-
-
+    public final static double InchesPerMotorRotation = Math.PI * WheelDiameter/DriveGearRatio;    //NeoEncoderCountsPerRev
 }

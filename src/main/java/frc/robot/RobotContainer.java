@@ -23,10 +23,12 @@ public class RobotContainer {
     //Operator Interface
     private static OI oi = new OI();
 
+    //Teleop Command
     public void setTeleopDefaultCommands() {
         drive.setDefaultCommand(new DriveWithController(drive, oi.GetDriverControl()));
     }
 
+    //Autonomous Commands
 	public static Command GetAutonomousCommand() {
 		return new AutonomousDistance(drive);
 	}

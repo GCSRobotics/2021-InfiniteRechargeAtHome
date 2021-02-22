@@ -11,6 +11,9 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
 
 public class AutonomousDistance extends SequentialCommandGroup {
+
+  DriveSub m_drive;
+
   /**
    * Creates a new Autonomous Drive based on distance. This will drive out for a
    * specified distance, turn around and drive back.
@@ -18,15 +21,20 @@ public class AutonomousDistance extends SequentialCommandGroup {
    * @param drivetrain The drivetrain subsystem on which this command will run
    */
   public AutonomousDistance(DriveSub drivetrain) {
-  
-    addCommands(
-      new DriveDistance(0.5, 60, drivetrain).andThen(new WaitCommand(0.25))
-      //new DriveDistance(0.5, -30, drivetrain).andThen(new WaitCommand(0.25))
-       // new TurnDegreesEncoder(0.6, 180, drivetrain).andThen(new WaitCommand(0.25)),
-       // new DriveDistance(0.5, 30, drivetrain).andThen(new WaitCommand(0.25))
-      //  new TurnDegreesGyro(0.5, 180, drivetrain).andThen(new WaitCommand(0.25))
-      //  new DriveDistance(0.5, 30, drivetrain)
+    m_drive = drivetrain;
+
+    addCommands(new DriveDistance(0.5, 60, drivetrain).andThen(new WaitCommand(0.25))
+    // new DriveDistance(0.5, -30, drivetrain).andThen(new WaitCommand(0.25))
+    // new TurnDegreesEncoder(0.6, 180, drivetrain).andThen(new WaitCommand(0.25)),
+    // new DriveDistance(0.5, 30, drivetrain).andThen(new WaitCommand(0.25))
+    // new TurnDegreesGyro(0.5, 180, drivetrain).andThen(new WaitCommand(0.25))
+    // new DriveDistance(0.5, 30, drivetrain)
     );
   }
 
-} 
+  @Override
+  public void initialize() {
+    m_drive.reset();
+  }
+
+}

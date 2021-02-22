@@ -4,7 +4,6 @@
 
 package frc.robot.commands.driveSub;
 
-
 import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
@@ -20,7 +19,7 @@ public class DriveDistance extends CommandBase {
   /**
    * Creates a new DriveDistance. This command will drive your your robot for a
    * desired distance at a desired speed.
-   *
+   * 
    * @param speed  The speed at which the robot will drive
    * @param inches The number of inches the robot will drive
    * @param drive  The drivetrain subsystem on which this command will run
@@ -35,36 +34,33 @@ public class DriveDistance extends CommandBase {
     SmartDashboard.putNumber("Kd", m_pidController.getD());
   }
 
-
-  // Called when the command is initially scheduled.
+  // Called once when the scheduler loads the command.
   @Override
   public void initialize() {
     m_drive.arcadeDrive(0, 0);
     m_drive.resetEncoders();
-   
-    // Add a tolerence to the PID loop to allow the "atSetpoint()" method to function within a range of values
-    // Read the 'Specifying and Checking Tolerance' section on this page for more details
-    // https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html 
 
-    m_pidController.setTolerance(1.5, 3); 
-    
+    // Add a tolerence to the PID loop to allow the "atSetpoint()" method to
+    // function within a range of values. Read the 'Specifying and Checking
+    // Tolerance' section on this page for more details //
+    // https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html
+    m_pidController.setTolerance(1.5, 3);
+
     SmartDashboard.putNumber("Setpoint", m_distance);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // m_drive.arcadeDrive(m_speed, 0);
-    System.out.println("drive straight");
+    System.out.println("Drive Straight Running");
     SmartDashboard.putNumber("Current Position ", m_drive.getAverageDistanceInch());
 
-    // m_pidController.setP(SmartDashboard.getNumber("Kp", 0.5));
-    // m_pidController.setD(SmartDashboard.getNumber("Kd", 0.0));
-
-    //use the MathUtil.Clamp() function to ensure the that motor speed (i.e. 'output' below) variable never goes 
-    //  outside the +/- range of the m_Speed variable passed into the command. (-m_Speed <= output <= m_Speed)
-    //See the "Clamping Controller Output" section of the following page
-    // https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html 
+    // Use the MathUtil.Clamp() function to ensure the that motor speed (i.e.
+    // 'output' below) variable never goes outside the +/- range of the m_Speed
+    // variable passed into the command.
+    // (-m_Speed <= output <= m_Speed). See the "Clamping Controller Output" section
+    // of the following page
+    // https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html
     double output = m_pidController.calculate(m_drive.getAverageDistanceInch(), m_distance);
     double outputC = MathUtil.clamp(output, -m_speed, m_speed);
     SmartDashboard.putNumber("PID Output Clamping", outputC);
@@ -73,19 +69,15 @@ public class DriveDistance extends CommandBase {
 
   }
 
-  // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     m_drive.arcadeDrive(0, 0);
   }
 
-  // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     // Compare distance travelled from start to desired distance
-    
-    SmartDashboard.putBoolean("Drive Staigght is finished", m_pidController.atSetpoint());
-
-    return m_pidController.atSetpoint();//Math.abs(m_drive.getAverageDistanceInch()) >= m_distance*2;
+    SmartDashboard.putBoolean("Drive Staight is finished", m_pidController.atSetpoint());
+    return m_pidController.atSetpoint();// Math.abs(m_drive.getAverageDistanceInch()) >= m_distance*2;
   }
 }
