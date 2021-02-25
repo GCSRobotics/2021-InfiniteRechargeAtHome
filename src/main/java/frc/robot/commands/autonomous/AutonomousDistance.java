@@ -23,7 +23,7 @@ public class AutonomousDistance extends SequentialCommandGroup {
   public AutonomousDistance(DriveSub drivetrain) {
     m_drive = drivetrain;
 
-    addCommands(new DriveDistance(0.5, 60, drivetrain).andThen(new WaitCommand(0.25))
+    addCommands(new DriveDistance(0.5, 30, drivetrain).andThen(new WaitCommand(0.25))
     // new DriveDistance(0.5, -30, drivetrain).andThen(new WaitCommand(0.25))
     // new TurnDegreesEncoder(0.6, 180, drivetrain).andThen(new WaitCommand(0.25)),
     // new DriveDistance(0.5, 30, drivetrain).andThen(new WaitCommand(0.25))
@@ -31,10 +31,4 @@ public class AutonomousDistance extends SequentialCommandGroup {
     // new DriveDistance(0.5, 30, drivetrain)
     );
   }
-
-  @Override
-  public void initialize() {
-    m_drive.reset();
-  }
-
 }

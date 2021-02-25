@@ -96,7 +96,7 @@ public class DriveSub extends SubsystemBase {
   }
 
   public double getAverageDistanceInch() {
-    return (getLeftDistanceInch() + getRightDistanceInch()) / 2.0;
+    return (Math.abs(getLeftDistanceInch()) + Math.abs(getRightDistanceInch())) / 2.0;
   }
 
   //********************************************

@@ -54,6 +54,8 @@ public class DriveDistance extends CommandBase {
   public void execute() {
     System.out.println("Drive Straight Running");
     SmartDashboard.putNumber("Current Position ", m_drive.getAverageDistanceInch());
+    SmartDashboard.putNumber("Current Left Position ", m_drive.getLeftDistanceInch());
+    SmartDashboard.putNumber("Current Right Position ", m_drive.getRightDistanceInch());
 
     // Use the MathUtil.Clamp() function to ensure the that motor speed (i.e.
     // 'output' below) variable never goes outside the +/- range of the m_Speed

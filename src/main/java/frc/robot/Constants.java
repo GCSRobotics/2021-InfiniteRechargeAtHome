@@ -32,7 +32,7 @@ public class Constants {
 
     // Wheel Distance Calculations
     public final static double WheelDiameter = 6.00;
-    public final static double DriveGearRatio = 1/10.71;  //Tufbox Mini Default Ratio 10.71:1
+    public final static double DriveGearRatio = 10.71;  //Tufbox Mini Default Ratio 10.71:1
     public final static double NeoEncoderCountsPerRev = 42;
     public final static double InchesPerMotorRotation = Math.PI * WheelDiameter/DriveGearRatio;    //NeoEncoderCountsPerRev
 
