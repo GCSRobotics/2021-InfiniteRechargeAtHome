@@ -14,12 +14,12 @@ public class DriveDistance extends CommandBase {
   private final DriveSub m_drive;
   private final double m_distance;
   private final double m_speed;
-  private final PIDController m_pidController = new PIDController(0.3, 0, 0.003);
+  private final PIDController m_pidController = new PIDController(4.2, 0, 0.04);
 
   /**
    * Creates a new DriveDistance. This command will drive your your robot for a
    * desired distance at a desired speed.
-   * 
+   *
    * @param speed  The speed at which the robot will drive
    * @param inches The number of inches the robot will drive
    * @param drive  The drivetrain subsystem on which this command will run
@@ -44,8 +44,7 @@ public class DriveDistance extends CommandBase {
     // function within a range of values. Read the 'Specifying and Checking
     // Tolerance' section on this page for more details //
     // https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html
-    m_pidController.setTolerance(1.5, 3);
-
+    //  m_pidController.setTolerance(5, 2);
     SmartDashboard.putNumber("Setpoint", m_distance);
   }
 

@@ -3,6 +3,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.autonomous.AutonomousDistance;
+import frc.robot.commands.autonomous.SlalomPath;
 import frc.robot.commands.driveSub.DriveWithController;
 import frc.robot.subsystems.*;
 
@@ -30,6 +31,8 @@ public class RobotContainer {
 
     //Autonomous Commands
 	public static Command GetAutonomousCommand() {
-		return new AutonomousDistance(drive);
+        // return new AutonomousDistance(drive);
+		return new SlalomPath(drive);
+        
 	}
 }
