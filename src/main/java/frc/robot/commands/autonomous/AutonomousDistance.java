@@ -23,14 +23,18 @@ public class AutonomousDistance extends SequentialCommandGroup {
   public AutonomousDistance(DriveSub drivetrain) {
     m_drive = drivetrain;
 
+    double driveSpeed = 0.50;
+    double turnSpeed = 0.40;
+
+    double waitTime = 0.25;
     addCommands(
-        new DriveDistance(0.5, 36, drivetrain).andThen(new WaitCommand(0.25)),
-    new TurnDegreesGyro(0.45, 180, drivetrain).andThen(new WaitCommand(0.25))
-    // new DriveDistance(0.5, -30, drivetrain).andThen(new WaitCommand(0.25))
+        new DriveDistance(driveSpeed, 36, drivetrain).andThen(new WaitCommand(waitTime)),
+    new TurnDegreesGyro(turnSpeed, 180, drivetrain).andThen(new WaitCommand(waitTime))
+    // new DriveDistance(driveSpeed, -30, drivetrain).andThen(new WaitCommand(waitTime))
     
-    // new DriveDistance(0.5, 30, drivetrain).andThen(new WaitCommand(0.25))
-    // new TurnDegreesGyro(0.5, 180, drivetrain).andThen(new WaitCommand(0.25))
-    // new DriveDistance(0.5, 30, drivetrain)
+    // new DriveDistance(driveSpeed, 30, drivetrain).andThen(new WaitCommand(waitTime))
+    // new TurnDegreesGyro(turnSpeed, 180, drivetrain).andThen(new WaitCommand(waitTime))
+    // new DriveDistance(driveSpeed, 30, drivetrain)
     );
   }
 }
