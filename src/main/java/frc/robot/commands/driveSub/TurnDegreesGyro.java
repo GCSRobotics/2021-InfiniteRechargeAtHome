@@ -14,7 +14,7 @@ public class TurnDegreesGyro extends CommandBase {
   private final DriveSub m_Drive;
   private final double m_Degrees;
   private final double m_Speed;
-  private final PIDController m_pidController = new PIDController(0.1, 0, 0.005);
+  private final PIDController m_pidController = new PIDController(0.07, 0, 0.005);
 
   /**
    * Creates a new TurnDegrees. This command will turn your robot for a desired rotation (in
