@@ -14,7 +14,7 @@ public class DriveDistance extends CommandBase {
   private final DriveSub m_drive;
   private final double m_distance;
   private final double m_speed;
-  private final PIDController m_pidController = new PIDController(3.5, 0, 0.0008);
+  private final PIDController m_pidController = new PIDController(0.05, 0, 0.0005);
 
   /**
    * Creates a new DriveDistance. This command will drive your your robot for a
@@ -44,7 +44,7 @@ public class DriveDistance extends CommandBase {
     // function within a range of values. Read the 'Specifying and Checking
     // Tolerance' section on this page for more details //
     // https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html
-    m_pidController.setTolerance(1.5, 3);
+    m_pidController.setTolerance(0.25);
     SmartDashboard.putNumber("Setpoint", m_distance);
   }
 
@@ -66,7 +66,7 @@ public class DriveDistance extends CommandBase {
     double outputC = MathUtil.clamp(output, -m_speed, m_speed);
     SmartDashboard.putNumber("PID Output Clamping", outputC);
     SmartDashboard.putNumber("PID Output", output);
-    m_drive.tankDrive(outputC, outputC);
+    m_drive.tankDrive(outputC, outputC, false);
 
   }
 
