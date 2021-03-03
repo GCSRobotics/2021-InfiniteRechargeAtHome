@@ -7,12 +7,18 @@
 
 package frc.robot.commands.commandgroup;
 
+import java.sql.Time;
+import java.time.LocalTime;
+import java.util.Date;
+
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.*;
 
 public class ShootPowerCell extends CommandBase {
   private IndexSub indexSub;
   private ShooterSub shooterSub;
+  private Date startTime;
 
   public ShootPowerCell(ShooterSub shooter, IndexSub index) {
     shooterSub = shooter;
@@ -20,18 +26,21 @@ public class ShootPowerCell extends CommandBase {
     addRequirements(indexSub);
     addRequirements(shooterSub);
   }
- 
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    startTime = new Date();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     shooterSub.runShooter();
-    indexSub.indexBall();
+    
+    if ((new Date()).getTime() - startTime.getTime() > 500) {
+      indexSub.indexBall();
+    }
   }
 
   // Called once the command ends or is interrupted.
