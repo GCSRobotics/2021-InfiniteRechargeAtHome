@@ -20,9 +20,10 @@ public class ShootPowerCell extends CommandBase {
   private ShooterSub shooterSub;
   private Date startTime;
 
-  public ShootPowerCell(ShooterSub shooter, IndexSub index) {
+  public ShootPowerCell(ShooterSub shooter, IndexSub index, double shooterDegree) {
     shooterSub = shooter;
     indexSub = index;
+    shooterSub.setShooterPosition(shooterDegree);
     addRequirements(indexSub);
     addRequirements(shooterSub);
   }

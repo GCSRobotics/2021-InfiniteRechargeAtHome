@@ -41,5 +41,12 @@ public class Constants {
     public final static int VisionPipeline_HexTarget = 0;
     public final static int VisionPipeline_Powercell = 1;
 
+    //shooter
+    public final static int ShooterEncoderA = 0;
+    public final static int ShooterEncoderB = 0;
+    public final static double ShooterAjusterGearRatio = 32/16;
+    public final static double ShooterEncoderPPR = 44.4 ;
+    public final static double ShooterWheelPulsePerDegree = (ShooterEncoderPPR * ShooterAjusterGearRatio) / 360;
+
 }
 

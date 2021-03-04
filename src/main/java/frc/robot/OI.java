@@ -9,7 +9,6 @@ package frc.robot;
 
 import frc.robot.commands.indexSub.RunIndex;
 import frc.robot.commands.intakeSub.*;
-import frc.robot.commands.shooterSub.AdjustShooter;
 import frc.robot.commands.shooterSub.RunShooter;
 import frc.robot.controllers.BaseController;
 import frc.robot.controllers.ControllerType;
@@ -43,7 +42,7 @@ public class OI {
       DriverControl.ButtonA.whenPressed(new RetractIntake(RobotContainer.intake));
       DriverControl.ButtonX.whileHeld(new RunIndex(RobotContainer.indexer));
 
-      DriverControl.ButtonB.whileHeld(new AdjustShooter(RobotContainer.shooter));
+      //DriverControl.ButtonB.whileHeld(new AdjustShooter(RobotContainer.shooter));
 
       DriverControl.ButtonL1.whileHeld(new RunShooter(RobotContainer.shooter));
       DriverControl.ButtonR1.whileHeld(new RunIntake(RobotContainer.intake));

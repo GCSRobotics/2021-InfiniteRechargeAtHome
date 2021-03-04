@@ -4,19 +4,44 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.wpiutil.math.MathUtil;
 import frc.robot.Constants;
 
-public class ShooterSub extends SubsystemBase{
-    
+public class ShooterSub extends SubsystemBase {
+
     private final WPI_TalonSRX leftShooter = new WPI_TalonSRX(Constants.leftShooterMotor);
     private final WPI_TalonSRX rightShooter = new WPI_TalonSRX(Constants.rightShooterMotor);
-  private final WPI_VictorSPX shooterAdjustment = new WPI_VictorSPX(Constants.shooterAdjustment);
+    private final WPI_VictorSPX shooterAdjustment = new WPI_VictorSPX(Constants.shooterAdjustment);
+    private final Encoder shooterEncoder = new Encoder(Constants.ShooterEncoderA, Constants.ShooterEncoderB);
+    private final PIDController pidController = new PIDController(0.1, 0, 0);
+    private double ShooterPositionDegree = 0;
+
     public ShooterSub() {
         this.leftShooter.configFactoryDefault();
         this.rightShooter.configFactoryDefault();
         this.leftShooter.setInverted(false);
         this.rightShooter.setInverted(true);
+        shooterEncoder.setDistancePerPulse(Constants.ShooterWheelPulsePerDegree);
+    }
+
+    @Override
+    public void periodic() {
+        double output = pidController.calculate(shooterEncoder.getDistance(), ShooterPositionDegree); 
+
+        double outputC = MathUtil.clamp(output, -0.25, 0.25);
+        adjustShooter(outputC);
+    }
+
+    public void setShooterPosition(double degrees) {
+        ShooterPositionDegree = degrees;
+    }
+
+    public void adjustShooter(double speed) 
+    {
+        this.shooterAdjustment.set(ControlMode.PercentOutput, speed);
     }
 
     public void runShooter() {
@@ -28,11 +53,5 @@ public class ShooterSub extends SubsystemBase{
         this.leftShooter.set(0);
         this.rightShooter.set(0);
     }
-    public void adjustShooter() {
-        this.shooterAdjustment.set(ControlMode.PercentOutput, .25);
-    }
-    public void stopShooterAdjustment(){
-        this.shooterAdjustment.set(0);
-    }
-}
 
+}

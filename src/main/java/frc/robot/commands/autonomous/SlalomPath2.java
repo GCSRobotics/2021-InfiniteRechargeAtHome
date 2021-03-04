@@ -33,7 +33,7 @@ public class SlalomPath2 extends SequentialCommandGroup {
       new TurnDegreesGyro(TurnSpeed, 0, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new DriveDistance(StraightSpeed, 106, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new TurnDegreesGyro(TurnSpeed, 20, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new ShootPowerCell(shooterSub, indexSub).withTimeout(3),
+      new ShootPowerCell(shooterSub, indexSub, 10.0).withTimeout(3),
       new TurnDegreesGyro(TurnSpeed, 50, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new DriveDistance(StraightSpeed, 104, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       // new TurnDegreesGyro(TurnSpeed, 0, drivetrain).andThen(new WaitCommand(_WAITTIME)),
