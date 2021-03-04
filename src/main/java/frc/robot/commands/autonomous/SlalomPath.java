@@ -18,10 +18,8 @@ public class SlalomPath extends SequentialCommandGroup {
   private static final double _WAITTIME = 0.1;
   private static final double StraightSpeed = 0.35;
   private static final double TurnSpeed = 0.4;
-  private DriveSub driveTrain;
 
   public SlalomPath(DriveSub drivetrain) {
-    driveTrain = drivetrain;
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(

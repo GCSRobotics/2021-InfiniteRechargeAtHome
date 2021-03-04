@@ -6,7 +6,7 @@ package frc.robot.commands.autonomous;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.WaitCommand;
-import frc.robot.commands.commandgroup.ShootPowerCell;
+import frc.robot.commands.groupcommands.ShootPowerCell;
 import frc.robot.commands.driveSub.DriveDistance;
 import frc.robot.commands.driveSub.TurnDegreesGyro;
 import frc.robot.subsystems.DriveSub;

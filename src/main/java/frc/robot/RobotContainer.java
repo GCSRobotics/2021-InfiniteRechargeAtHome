@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.commands.autonomous.AutonomousDistance;
 import frc.robot.commands.autonomous.SlalomPath;
 import frc.robot.commands.autonomous.SlalomPath2;
-import frc.robot.commands.commandgroup.ShootPowerCell;
+import frc.robot.commands.groupcommands.ShootPowerCell;
 import frc.robot.commands.driveSub.DriveWithController;
 import frc.robot.subsystems.*;
 
