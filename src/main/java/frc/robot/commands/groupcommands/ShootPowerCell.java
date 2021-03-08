@@ -8,6 +8,7 @@
 package frc.robot.commands.groupcommands;
 
 import java.util.Date;
+import java.util.function.DoubleUnaryOperator;
 
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.*;
@@ -16,11 +17,12 @@ public class ShootPowerCell extends CommandBase {
   private IndexSub indexSub;
   private ShooterSub shooterSub;
   private Date startTime;
+  private double degrees ;
 
   public ShootPowerCell(ShooterSub shooter, IndexSub index, double shooterDegree) {
     shooterSub = shooter;
     indexSub = index;
-    shooterSub.setShooterPosition(shooterDegree);
+    degrees = shooterDegree;
     addRequirements(indexSub);
     addRequirements(shooterSub);
   }
@@ -28,6 +30,7 @@ public class ShootPowerCell extends CommandBase {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    shooterSub.setShooterPosition(degrees);
     startTime = new Date();
   }
 

@@ -6,6 +6,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.controller.PIDController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpiutil.math.MathUtil;
 import frc.robot.Constants;
@@ -15,7 +16,7 @@ public class ShooterSub extends SubsystemBase {
     private final WPI_TalonSRX leftShooter = new WPI_TalonSRX(Constants.leftShooterMotor);
     private final WPI_TalonSRX rightShooter = new WPI_TalonSRX(Constants.rightShooterMotor);
     private final WPI_VictorSPX shooterAdjustment = new WPI_VictorSPX(Constants.shooterAdjustment);
-    private final Encoder shooterEncoder = new Encoder(Constants.ShooterEncoderA, Constants.ShooterEncoderB);
+    private final Encoder tiltEncoder = new Encoder(Constants.ShooterEncoderA, Constants.ShooterEncoderB);
     private final PIDController pidController = new PIDController(0.1, 0, 0);
     private double ShooterPositionDegree = 0;
 
@@ -24,13 +25,17 @@ public class ShooterSub extends SubsystemBase {
         this.rightShooter.configFactoryDefault();
         this.leftShooter.setInverted(false);
         this.rightShooter.setInverted(true);
-        shooterEncoder.setDistancePerPulse(Constants.ShooterWheelPulsePerDegree);
+        tiltEncoder.setDistancePerPulse(Constants.ShooterWheelPulsePerDegree);
+        tiltEncoder.reset();
+        addChild("Tilt Encoder", tiltEncoder);
+        addChild("Tilt PID", pidController);
     }
 
     @Override
     public void periodic() {
-        double output = pidController.calculate(shooterEncoder.getDistance(), ShooterPositionDegree); 
-
+        double output = pidController.calculate(tiltEncoder.getDistance(), ShooterPositionDegree); 
+SmartDashboard.putNumber("PID Output", output);
+SmartDashboard.putNumber("Shooter Distance", tiltEncoder.getDistance());
         double outputC = MathUtil.clamp(output, -0.25, 0.25);
         adjustShooter(outputC);
     }
