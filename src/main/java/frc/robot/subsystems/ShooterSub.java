@@ -17,7 +17,7 @@ public class ShooterSub extends SubsystemBase {
     private final WPI_TalonSRX rightShooter = new WPI_TalonSRX(Constants.rightShooterMotor);
     private final WPI_VictorSPX shooterAdjustment = new WPI_VictorSPX(Constants.shooterAdjustment);
     private final Encoder tiltEncoder = new Encoder(Constants.ShooterEncoderA, Constants.ShooterEncoderB);
-    private final PIDController pidController = new PIDController(0.1, 0, 0);
+    private final PIDController pidController = new PIDController(0.1, 0, .015);
     private double ShooterPositionDegree = 0;
 
     public ShooterSub() {
@@ -25,8 +25,9 @@ public class ShooterSub extends SubsystemBase {
         this.rightShooter.configFactoryDefault();
         this.leftShooter.setInverted(false);
         this.rightShooter.setInverted(true);
-        tiltEncoder.setDistancePerPulse(Constants.ShooterWheelPulsePerDegree);
+        tiltEncoder.setDistancePerPulse(Constants.ShooterWheelDegreesPerPulse);
         tiltEncoder.reset();
+        tiltEncoder.setReverseDirection(true);
         addChild("Tilt Encoder", tiltEncoder);
         addChild("Tilt PID", pidController);
     }

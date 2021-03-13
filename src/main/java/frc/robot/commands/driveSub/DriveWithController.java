@@ -100,7 +100,7 @@ public class DriveWithController extends CommandBase {
       rotationSpeed = driveController.GetAxis_RightX();
     }
 
-    driveSub.arcadeDrive(-forwardSpeed, rotationSpeed);
+    driveSub.arcadeDrive(-forwardSpeed * .65 , rotationSpeed);
     ;
   }
 

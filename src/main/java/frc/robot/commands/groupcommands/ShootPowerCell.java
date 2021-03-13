@@ -8,8 +8,8 @@
 package frc.robot.commands.groupcommands;
 
 import java.util.Date;
-import java.util.function.DoubleUnaryOperator;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.*;
 
@@ -25,11 +25,13 @@ public class ShootPowerCell extends CommandBase {
     degrees = shooterDegree;
     addRequirements(indexSub);
     addRequirements(shooterSub);
+    SmartDashboard.putNumber("Shooter Degrees", 10);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    degrees = SmartDashboard.getNumber("Shooter Degrees", 45);
     shooterSub.setShooterPosition(degrees);
     startTime = new Date();
   }
@@ -38,7 +40,6 @@ public class ShootPowerCell extends CommandBase {
   @Override
   public void execute() {
     shooterSub.runShooter();
-    
     if ((new Date()).getTime() - startTime.getTime() > 500) {
       indexSub.indexBall();
     }
