@@ -17,7 +17,7 @@ public class ShooterSub extends SubsystemBase {
     private final WPI_TalonSRX rightShooter = new WPI_TalonSRX(Constants.rightShooterMotor);
     private final WPI_VictorSPX shooterAdjustment = new WPI_VictorSPX(Constants.shooterAdjustment);
     private final Encoder tiltEncoder = new Encoder(Constants.ShooterEncoderA, Constants.ShooterEncoderB);
-    private final PIDController pidController = new PIDController(0.1, 0, .015);
+    private final PIDController pidController = new PIDController(0.07, 0, .005);
     private double ShooterPositionDegree = 0;
 
     public ShooterSub() {
