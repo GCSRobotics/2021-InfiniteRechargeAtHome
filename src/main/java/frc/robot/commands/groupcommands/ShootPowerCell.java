@@ -16,12 +16,14 @@ import frc.robot.subsystems.*;
 public class ShootPowerCell extends CommandBase {
   private IndexSub indexSub;
   private ShooterSub shooterSub;
+  private IntakeSub intakeSub;
   private Date startTime;
   private double degrees ;
 
-  public ShootPowerCell(ShooterSub shooter, IndexSub index, double shooterDegree) {
+  public ShootPowerCell(ShooterSub shooter, IndexSub index, IntakeSub intake, double shooterDegree) {
     shooterSub = shooter;
     indexSub = index;
+    intakeSub = intake;
     degrees = shooterDegree;
     addRequirements(indexSub);
     addRequirements(shooterSub);
@@ -34,6 +36,7 @@ public class ShootPowerCell extends CommandBase {
     degrees = SmartDashboard.getNumber("Shooter Degrees", 45);
     shooterSub.setShooterPosition(degrees);
     startTime = new Date();
+    intakeSub.extendIntake();
   }
 
   // Called every time the scheduler runs while the command is scheduled.

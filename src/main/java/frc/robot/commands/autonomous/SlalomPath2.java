@@ -11,6 +11,7 @@ import frc.robot.commands.driveSub.DriveDistance;
 import frc.robot.commands.driveSub.TurnDegreesGyro;
 import frc.robot.subsystems.DriveSub;
 import frc.robot.subsystems.IndexSub;
+import frc.robot.subsystems.IntakeSub;
 import frc.robot.subsystems.ShooterSub;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -23,7 +24,7 @@ public class SlalomPath2 extends SequentialCommandGroup {
   private static final double TurnSpeed = 0.4;
 
   /** Creates a new SlalomPath2. */
-  public SlalomPath2(DriveSub drivetrain, ShooterSub shooterSub, IndexSub indexSub) {
+  public SlalomPath2(DriveSub drivetrain, ShooterSub shooterSub, IndexSub indexSub, IntakeSub intakeSub) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
@@ -33,7 +34,7 @@ public class SlalomPath2 extends SequentialCommandGroup {
       new TurnDegreesGyro(TurnSpeed, 0, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new DriveDistance(StraightSpeed, 106, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new TurnDegreesGyro(TurnSpeed, 20, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new ShootPowerCell(shooterSub, indexSub, 10.0).withTimeout(3),
+      new ShootPowerCell(shooterSub, indexSub, intakeSub, 10.0).withTimeout(3),
       new TurnDegreesGyro(TurnSpeed, 50, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new DriveDistance(StraightSpeed, 104, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       // new TurnDegreesGyro(TurnSpeed, 0, drivetrain).andThen(new WaitCommand(_WAITTIME)),

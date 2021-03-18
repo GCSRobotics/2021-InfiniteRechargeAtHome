@@ -37,15 +37,10 @@ public class OI {
   
     private void ButtonActionInit() {
       // Driver buttons.
-      // DriverControl.ButtonY.whileHeld(new OpenClimber(RobotContainer.Climber));
-      // DriverControl.ButtonX.whileHeld(new Climb(RobotContainer.Climber));
       DriverControl.ButtonY.whenPressed(new ExtendIntake(RobotContainer.intake));
       DriverControl.ButtonA.whenPressed(new RetractIntake(RobotContainer.intake));
-      DriverControl.ButtonB.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, 45).withTimeout(3));
+      DriverControl.ButtonB.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, 45).withTimeout(3));
       DriverControl.ButtonX.whileHeld(new RunIndex(RobotContainer.indexer));
-
-      // DriverControl.ButtonB.whileHeld(new AdjustShooter(RobotContainer.shooter));
-
       DriverControl.ButtonL1.whileHeld(new RunShooter(RobotContainer.shooter));
       DriverControl.ButtonR1.whileHeld(new RunIntake(RobotContainer.intake));
 
