@@ -35,6 +35,11 @@ public class RobotContainer {
         SmartDashboard.putString("Autonomous Routine", Constants.AutoRoutines.BarrelRacing);
         SmartDashboard.putString("Autonomous Routine", Constants.AutoRoutines.BouncePath);
         SmartDashboard.putString("Autonomous Routine", Constants.AutoRoutines.SlalomPath);
+        
+        SmartDashboard.putData("Auto Distance", new AutonomousDistance(drive));
+        SmartDashboard.putData("Auto Barrel", new BarrelRacing(drive));
+        SmartDashboard.putData("Auto Slalom", new SlalomPath(drive));
+        SmartDashboard.putData("Auto Bounce", new BouncePath(drive));
     }
 
     // Teleop Command
