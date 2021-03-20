@@ -14,7 +14,6 @@ public class RobotContainer {
 
     //Intake Subsystem
     public static IntakeSub intake = new IntakeSub();
-//    public Compressor compressor = new Compressor(1);
 
     //Index Subsystem
     public static IndexSub indexer = new IndexSub();
