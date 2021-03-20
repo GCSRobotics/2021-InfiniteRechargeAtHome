@@ -21,7 +21,7 @@ public class DriveWithController extends CommandBase {
   private final DriveSub driveSub;
   private final BaseController driveController;
 
-  PhotonCamera camera = new PhotonCamera("LifeCam");
+  PhotonCamera camera = new PhotonCamera(Constants.VisionCamera_HexTarget);
 
   PIDController controller = new PIDController(.175, 0, 0.015);
 

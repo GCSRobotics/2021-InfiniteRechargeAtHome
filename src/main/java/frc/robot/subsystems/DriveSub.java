@@ -90,6 +90,10 @@ public class DriveSub extends SubsystemBase {
     robotDrive.tankDrive(leftSpeed, rightSpeed, squared);
   }
 
+  public void setMaxDriveSpeed(double maxSpeed){
+    robotDrive.setMaxOutput(maxSpeed);
+  }
+
   public void stop() {
     robotDrive.arcadeDrive(0, 0);
   }
