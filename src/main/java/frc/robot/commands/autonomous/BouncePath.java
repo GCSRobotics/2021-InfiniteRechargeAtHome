@@ -18,9 +18,9 @@ public class BouncePath extends SequentialCommandGroup {
 
   private final DriveSub m_drive;
 
-  private static final double _WAITTIME = 0.1;
-  private static final double StraightSpeed = 0.75;
-  private static final double TurnSpeed = 0.5;
+  private static final double _WAITTIME = 0.2;
+  private static final double StraightSpeed = 0.4;
+  private static final double TurnSpeed = 0.4;
 
 
   /** Creates a new BouncePath. */
@@ -34,7 +34,7 @@ public class BouncePath extends SequentialCommandGroup {
       //new DriveDistance(0.5, -30, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       //Turn toward first marker
       new TurnDegreesGyro(TurnSpeed, -75, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new DriveDistance(StraightSpeed, 44.5, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+      new DriveDistance(StraightSpeed, 44, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       // Turn and hit marker
       new TurnDegreesGyro(TurnSpeed, -123, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new DriveDistance(StraightSpeed, -168, drivetrain).andThen(new WaitCommand(_WAITTIME)),
@@ -54,14 +54,10 @@ public class BouncePath extends SequentialCommandGroup {
       new DriveDistance(StraightSpeed, 115, drivetrain).andThen(new WaitCommand(_WAITTIME)), 
       new TurnDegreesGyro(TurnSpeed, -140, drivetrain).andThen(new WaitCommand(_WAITTIME)),
 
-      new DriveDistance(StraightSpeed, -84, drivetrain),
+      new DriveDistance(StraightSpeed, -80, drivetrain),
       new TurnDegreesGyro(TurnSpeed, -180, drivetrain).andThen(new WaitCommand(_WAITTIME))
 
     );
   }
 
-  @Override
-  public void initialize() {
-    m_drive.reset();
-  }
 }

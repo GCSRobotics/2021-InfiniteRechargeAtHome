@@ -14,7 +14,7 @@ public class TurnDegreesGyro extends CommandBase {
   private final DriveSub m_Drive;
   private final double m_Degrees;
   private final double m_Speed;
-  private final PIDController m_pidController = new PIDController(0.07, 0, 0.005);
+  private final PIDController m_pidController = new PIDController(0.42, 0, 0.04);
 
   /**
    * Creates a new TurnDegrees. This command will turn your robot for a desired rotation (in
@@ -35,9 +35,9 @@ public class TurnDegreesGyro extends CommandBase {
   @Override
   public void initialize() {
     // Set motors to stop, read encoder values for starting point
-    m_Drive.arcadeDrive(0, 0);
+    //m_Drive.arcadeDrive(0, 0);
     m_Drive.reset();
-    m_pidController.setTolerance(2.0, 3.0); 
+   // m_pidController.setTolerance(0.5); 
 
 
   }
@@ -48,6 +48,12 @@ public class TurnDegreesGyro extends CommandBase {
     
     double output = m_pidController.calculate(m_Drive.getGyroAngle(), m_Degrees);
     double outputC = MathUtil.clamp(output, -m_Speed, m_Speed);
+
+    
+    // if(outputC < 0.1)
+    // {
+    //   outputC = 0.1;
+    // }
     m_Drive.arcadeDrive(0, outputC);
 
     

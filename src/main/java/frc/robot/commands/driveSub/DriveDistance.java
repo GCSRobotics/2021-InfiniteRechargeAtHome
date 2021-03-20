@@ -14,7 +14,7 @@ public class DriveDistance extends CommandBase {
   private final DriveSub m_drive;
   private final double m_distance;
   private final double m_speed;
-  private final PIDController m_pidController = new PIDController(0.05, 0, 0.0005);
+  private final PIDController m_pidController = new PIDController(0.045, 0, 0.0025);
 
   /**
    * Creates a new DriveDistance. This command will drive your your robot for a
@@ -37,7 +37,7 @@ public class DriveDistance extends CommandBase {
   // Called once when the scheduler loads the command.
   @Override
   public void initialize() {
-    m_drive.arcadeDrive(0, 0);
+   // m_drive.arcadeDrive(0, 0);
     m_drive.resetEncoders();
 
     // Add a tolerence to the PID loop to allow the "atSetpoint()" method to

@@ -23,18 +23,27 @@ public class AutonomousDistance extends SequentialCommandGroup {
   public AutonomousDistance(DriveSub drivetrain) {
     m_drive = drivetrain;
 
-    double driveSpeed = 0.50;
+    double driveSpeed = 0.5;
     double turnSpeed = 0.40;
 
-    double waitTime = 0.25;
+    double waitTime = 0.1;
     addCommands(
-        new DriveDistance(driveSpeed, 36, drivetrain).andThen(new WaitCommand(waitTime))
+       // new DriveDistance(driveSpeed, 36, drivetrain).andThen(new WaitCommand(waitTime))
    // new TurnDegreesGyro(turnSpeed, 180, drivetrain).andThen(new WaitCommand(waitTime))
-    // new DriveDistance(driveSpeed, -30, drivetrain).andThen(new WaitCommand(waitTime))
+    // new DriveDistance(driveSpeed, -40, drivetrain).andThen(new WaitCommand(waitTime))
     
-    // new DriveDistance(driveSpeed, 30, drivetrain).andThen(new WaitCommand(waitTime))
+    // new DriveDistance(driveSpeed, 40, drivetrain).andThen(new WaitCommand(waitTime))
     // new TurnDegreesGyro(turnSpeed, 180, drivetrain).andThen(new WaitCommand(waitTime))
-    // new DriveDistance(driveSpeed, 30, drivetrain)
+    // new DriveDistance(driveSpeed, 40, drivetrain)
+    new DriveDistance(driveSpeed, 40, drivetrain).andThen(new WaitCommand(waitTime)),
+     new TurnDegreesGyro(turnSpeed, -90, drivetrain).andThen(new WaitCommand(waitTime)),
+     new DriveDistance(driveSpeed, 40, drivetrain).andThen(new WaitCommand(waitTime)),
+     new TurnDegreesGyro(turnSpeed, -180, drivetrain).andThen(new WaitCommand(waitTime)),
+     new DriveDistance(driveSpeed, 40, drivetrain).andThen(new WaitCommand(waitTime)),
+     new TurnDegreesGyro(turnSpeed, -270, drivetrain).andThen(new WaitCommand(waitTime)),
+     new DriveDistance(driveSpeed, 40, drivetrain).andThen(new WaitCommand(waitTime)),
+     new TurnDegreesGyro(turnSpeed, -360, drivetrain)
+
     );
   }
 }
