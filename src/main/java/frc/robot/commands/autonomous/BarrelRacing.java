@@ -19,39 +19,38 @@ public class BarrelRacing extends SequentialCommandGroup {
   private static final double StraightSpeed = 0.35;
   private static final double TurnSpeed = 0.4;
 
-  private DriveSub driveTrain;
+  private final DriveSub m_drive;
   
   public BarrelRacing(DriveSub drivetrain) {
-    driveTrain = drivetrain;
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    
+    m_drive = drivetrain;
     addCommands(
-        new DriveDistance(StraightSpeed, 108, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new TurnDegreesGyro(TurnSpeed, 60, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 34, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new TurnDegreesGyro(TurnSpeed, 180, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 34, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new TurnDegreesGyro(TurnSpeed, 90, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 34, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new TurnDegreesGyro(TurnSpeed, 340, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 127, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new TurnDegreesGyro(TurnSpeed, 40, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, -30, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new TurnDegreesGyro(TurnSpeed, 75, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 120, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new TurnDegreesGyro(TurnSpeed, 10, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 60, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new TurnDegreesGyro(TurnSpeed, -270, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 12, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new TurnDegreesGyro(TurnSpeed, -180, driveTrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 312, driveTrain).andThen(new WaitCommand(_WAITTIME))
+        new DriveDistance(StraightSpeed, 108, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new TurnDegreesGyro(TurnSpeed, 60, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 34, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new TurnDegreesGyro(TurnSpeed, 180, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 34, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new TurnDegreesGyro(TurnSpeed, 90, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 34, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new TurnDegreesGyro(TurnSpeed, 340, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 127, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new TurnDegreesGyro(TurnSpeed, 40, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, -30, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new TurnDegreesGyro(TurnSpeed, 75, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 120, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new TurnDegreesGyro(TurnSpeed, 10, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 60, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new TurnDegreesGyro(TurnSpeed, -270, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 12, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new TurnDegreesGyro(TurnSpeed, -180, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 312, drivetrain).andThen(new WaitCommand(_WAITTIME))
         );
     }
   
     @Override
     public void initialize() {
-      driveTrain.reset();
+      m_drive.reset();
     }
   }  
 

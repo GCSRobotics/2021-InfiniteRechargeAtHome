@@ -16,15 +16,15 @@ import frc.robot.commands.driveSub.TurnDegreesGyro;
 import frc.robot.subsystems.*;
 
 public class RobotContainer {
-    //Drive Subsystem
+    // Drive Subsystem
     public static DriveSub drive = new DriveSub();
-    //Intake Subsystem
+    // Intake Subsystem
     public static IntakeSub intake = new IntakeSub();
-    //Index Subsystem
+    // Index Subsystem
     public static IndexSub indexer = new IndexSub();
-    //Shooter Subsystems
+    // Shooter Subsystems
     public static ShooterSub shooter = new ShooterSub();
-    //Operator Interface
+    // Operator Interface
     private static OI oi = new OI();
 
     public RobotContainer() {
@@ -37,13 +37,13 @@ public class RobotContainer {
         SmartDashboard.putString("Autonomous Routine", Constants.AutoRoutines.SlalomPath);
     }
 
-    //Teleop Command
+    // Teleop Command
     public void setTeleopDefaultCommands() {
         drive.setDefaultCommand(new DriveWithController(drive, oi.GetDriverControl()));
     }
 
-    //Autonomous Commands
-	public static Command GetAutonomousCommand() {
+    // Autonomous Commands
+    public static Command GetAutonomousCommand() {
         // Get the auto routine setting from the dashboard.
         String autoRoutine = SmartDashboard.getString("Autonomous Routine", Constants.AutoRoutines.AutonomousDistance);
 
@@ -56,24 +56,17 @@ public class RobotContainer {
                 autoCommand = new AutonomousDistance(drive);
                 break;
             case Constants.AutoRoutines.GalaticSearch_PathA:
-                //Drive to a specific location then find the powercell 
-                //  then drive path based on where powercell is
-                autoCommand = new SequentialCommandGroup(
-                    new DriveDistance(StraightSpeed, 150, drive),
-                    new WaitCommand(WaitTime), 
-                    new FindPowerCellA(drive)
-                );
+                // Drive to a specific location then find the powercell
+                // then drive path based on where powercell is
+                autoCommand = new SequentialCommandGroup(new DriveDistance(StraightSpeed, 150, drive),
+                        new WaitCommand(WaitTime), new FindPowerCellA(drive));
                 break;
             case Constants.AutoRoutines.GalaticSearch_PathB:
-                //Drive to a specific location then find the powercell 
-                //  then drive path based on where powercell is
-                autoCommand = new SequentialCommandGroup(
-                    new DriveDistance(StraightSpeed, 162, drive),
-                    new WaitCommand(WaitTime),
-                    new TurnDegreesGyro(TurnSpeed, -90, drive),
-                    new WaitCommand(WaitTime), 
-                    new FindPowerCellB(drive)
-                );
+                // Drive to a specific location then find the powercell
+                // then drive path based on where powercell is
+                autoCommand = new SequentialCommandGroup(new DriveDistance(StraightSpeed, 162, drive),
+                        new WaitCommand(WaitTime), new TurnDegreesGyro(TurnSpeed, -90, drive),
+                        new WaitCommand(WaitTime), new FindPowerCellB(drive));
                 break;
             case Constants.AutoRoutines.BarrelRacing:
                 autoCommand = new BarrelRacing(drive);
@@ -88,6 +81,6 @@ public class RobotContainer {
                 autoCommand = new AutonomousDistance(drive);
                 break;
         }
-        return autoCommand;	
+        return autoCommand;
     }
 }

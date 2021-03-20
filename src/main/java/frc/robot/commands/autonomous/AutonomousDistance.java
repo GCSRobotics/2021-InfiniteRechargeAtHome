@@ -28,8 +28,8 @@ public class AutonomousDistance extends SequentialCommandGroup {
 
     double waitTime = 0.25;
     addCommands(
-        new DriveDistance(driveSpeed, 36, drivetrain).andThen(new WaitCommand(waitTime)),
-    new TurnDegreesGyro(turnSpeed, 180, drivetrain).andThen(new WaitCommand(waitTime))
+        new DriveDistance(driveSpeed, 36, drivetrain).andThen(new WaitCommand(waitTime))
+   // new TurnDegreesGyro(turnSpeed, 180, drivetrain).andThen(new WaitCommand(waitTime))
     // new DriveDistance(driveSpeed, -30, drivetrain).andThen(new WaitCommand(waitTime))
     
     // new DriveDistance(driveSpeed, 30, drivetrain).andThen(new WaitCommand(waitTime))

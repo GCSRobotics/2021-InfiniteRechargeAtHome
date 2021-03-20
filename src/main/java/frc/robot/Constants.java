@@ -50,4 +50,13 @@ public class Constants {
         public final static String BouncePath = "Bounce Path";
         public final static String SlalomPath = "Slalom Path";
     }
+
+    //shooter
+    public final static int ShooterEncoderA = 8;
+    public final static int ShooterEncoderB = 9;
+    public final static double ShooterAjusterGearRatio = 32/16;
+    public final static double ShooterEncoderPPR = 44.4;
+    public final static double ShooterWheelDegreesPerPulse = 360 / (ShooterEncoderPPR * ShooterAjusterGearRatio);
+
 }
+
