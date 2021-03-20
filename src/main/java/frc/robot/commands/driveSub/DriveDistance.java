@@ -44,7 +44,7 @@ public class DriveDistance extends CommandBase {
     // function within a range of values. Read the 'Specifying and Checking
     // Tolerance' section on this page for more details //
     // https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html
-    m_pidController.setTolerance(1.5, 3);
+    m_pidController.setTolerance(0.5);
     SmartDashboard.putNumber("Setpoint", m_distance);
   }
 
@@ -66,13 +66,13 @@ public class DriveDistance extends CommandBase {
     double outputC = MathUtil.clamp(output, -m_speed, m_speed);
     SmartDashboard.putNumber("PID Output Clamping", outputC);
     SmartDashboard.putNumber("PID Output", output);
-    m_drive.tankDrive(outputC, outputC);
+    m_drive.tankDrive(outputC, outputC, false);
 
   }
 
   @Override
   public void end(boolean interrupted) {
-    m_drive.arcadeDrive(0, 0);
+    m_drive.arcadeDrive(0, 0, false);
   }
 
   @Override

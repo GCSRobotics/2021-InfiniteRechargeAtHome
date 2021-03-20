@@ -48,12 +48,4 @@ public class SlalomPath extends SequentialCommandGroup {
       );
   }
 
-  @Override
-  public void initialize() {
-    // TODO Auto-generated method stub
-    super.initialize();
-   // driveTrain.ResetRobot();
-
-  
-  }
 }
