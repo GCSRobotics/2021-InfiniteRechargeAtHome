@@ -27,13 +27,12 @@ public class ShootPowerCell extends CommandBase {
     degrees = shooterDegree;
     addRequirements(indexSub);
     addRequirements(shooterSub);
-    SmartDashboard.putNumber("Shooter Degrees", 10);
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    degrees = SmartDashboard.getNumber("Shooter Degrees", 45);
+    // degrees = SmartDashboard.getNumber("Shooter Degrees", 45);
     shooterSub.setShooterPosition(degrees);
     startTime = new Date();
     intakeSub.extendIntake();
@@ -43,7 +42,7 @@ public class ShootPowerCell extends CommandBase {
   @Override
   public void execute() {
     shooterSub.runShooter();
-    if ((new Date()).getTime() - startTime.getTime() > 500) {
+    if ((new Date()).getTime() - startTime.getTime() > 2000) {
       indexSub.indexBall();
     }
   }

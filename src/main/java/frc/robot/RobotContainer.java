@@ -28,18 +28,7 @@ public class RobotContainer {
     private static OI oi = new OI();
 
     public RobotContainer() {
-        // Configure the smart dashboard
-        SmartDashboard.putString("Autonomous Routine", Constants.AutoRoutines.AutonomousDistance);
-        SmartDashboard.putString("Autonomous Routine", Constants.AutoRoutines.GalaticSearch_PathA);
-        SmartDashboard.putString("Autonomous Routine", Constants.AutoRoutines.GalaticSearch_PathB);
-        SmartDashboard.putString("Autonomous Routine", Constants.AutoRoutines.BarrelRacing);
-        SmartDashboard.putString("Autonomous Routine", Constants.AutoRoutines.BouncePath);
-        SmartDashboard.putString("Autonomous Routine", Constants.AutoRoutines.SlalomPath);
-
-        SmartDashboard.putData("Auto Distance", new AutonomousDistance(drive));
-        SmartDashboard.putData("Auto Barrel", new BarrelRacing(drive));
-        SmartDashboard.putData("Auto Slalom", new SlalomPath(drive));
-        SmartDashboard.putData("Auto Bounce", new BouncePath(drive));
+        
     }
 
     // Teleop Command
@@ -71,9 +60,9 @@ public class RobotContainer {
 
          //return new BouncePath(drive);
 
-        //return new SlalomPath(drive);
+        return new SlalomPath(drive);
 
-        return new AutonomousDistance(drive);
+        //return new AutonomousDistance(drive);
 
     }
 }

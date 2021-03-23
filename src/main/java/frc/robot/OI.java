@@ -49,9 +49,9 @@ public class OI {
       // Operator buttons.
       OperatorControl.ButtonY.whenPressed(new ExtendIntake(RobotContainer.intake));
       OperatorControl.ButtonA.whenPressed(new RetractIntake(RobotContainer.intake));
-      OperatorControl.ButtonX.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -80).withTimeout(3));
-      OperatorControl.ButtonB.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -170).withTimeout(3));
-      OperatorControl.ButtonR1.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -250).withTimeout(3));
+      OperatorControl.ButtonX.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -140).withTimeout(5));
+      OperatorControl.ButtonB.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -230).withTimeout(5));
+      OperatorControl.ButtonR1.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -310).withTimeout(5));
       // OperatorControl.ButtonA.whileHeld(new AutoCenterStart(RobotContainer.Drive, 120, RobotContainer.ShooterLeft, RobotContainer.ShooterRight, RobotContainer.Indexer));
       // OperatorControl.ButtonY.whileHeld(new StartShooter(RobotContainer.Shooter));
       OperatorControl.ButtonR1.whileHeld(new RunIntake(RobotContainer.intake));

@@ -29,9 +29,7 @@ public class DriveDistance extends CommandBase {
     m_speed = speed;
     m_drive = drive;
     addRequirements(drive);
-    SmartDashboard.putNumber("Setpoint", m_distance);
-    SmartDashboard.putNumber("Kp", m_pidController.getP());
-    SmartDashboard.putNumber("Kd", m_pidController.getD());
+    
   }
 
   // Called once when the scheduler loads the command.
@@ -39,34 +37,30 @@ public class DriveDistance extends CommandBase {
   public void initialize() {
    // m_drive.arcadeDrive(0, 0);
     m_drive.resetEncoders();
-
+    m_pidController.setSetpoint(m_distance);
     // Add a tolerence to the PID loop to allow the "atSetpoint()" method to
     // function within a range of values. Read the 'Specifying and Checking
     // Tolerance' section on this page for more details //
     // https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html
-    m_pidController.setTolerance(0.25);
-    SmartDashboard.putNumber("Setpoint", m_distance);
+    m_pidController.setTolerance(0.3);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     System.out.println("Drive Straight Running");
-    SmartDashboard.putNumber("Current Position ", m_drive.getAverageDistanceInch());
-    SmartDashboard.putNumber("Current Left Position ", m_drive.getLeftDistanceInch());
-    SmartDashboard.putNumber("Current Right Position ", m_drive.getRightDistanceInch());
-
+    
     // Use the MathUtil.Clamp() function to ensure the that motor speed (i.e.
     // 'output' below) variable never goes outside the +/- range of the m_Speed
     // variable passed into the command.
     // (-m_Speed <= output <= m_Speed). See the "Clamping Controller Output" section
     // of the following page
     // https://docs.wpilib.org/en/stable/docs/software/advanced-controls/controllers/pidcontroller.html
-    double output = m_pidController.calculate(m_drive.getAverageDistanceInch(), m_distance);
+    double output = m_pidController.calculate(m_drive.getAverageDistanceInch());
     double outputC = MathUtil.clamp(output, -m_speed, m_speed);
-    SmartDashboard.putNumber("PID Output Clamping", outputC);
-    SmartDashboard.putNumber("PID Output", output);
+   
     m_drive.tankDrive(outputC, outputC, false);
+   // m_drive.arcadeDrive(outputC, 0);
 
   }
 
@@ -78,7 +72,7 @@ public class DriveDistance extends CommandBase {
   @Override
   public boolean isFinished() {
     // Compare distance travelled from start to desired distance
-    SmartDashboard.putBoolean("Drive Staight is finished", m_pidController.atSetpoint());
+    
     return m_pidController.atSetpoint();// Math.abs(m_drive.getAverageDistanceInch()) >= m_distance*2;
   }
 }

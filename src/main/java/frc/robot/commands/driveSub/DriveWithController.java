@@ -47,8 +47,7 @@ public class DriveWithController extends CommandBase {
     // Pipelines are fully configured using the PhotonVision web page (i.e
     // http://10.19.47.92:5800)
     camera.setPipelineIndex(Constants.VisionPipeline_HexTarget);
-    SmartDashboard.putNumber("findTargetP", 0.1);
-    SmartDashboard.putNumber("findTargetD", 0.0);
+    
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -87,9 +86,7 @@ public class DriveWithController extends CommandBase {
 
         double output = controller.calculate(yaw, 0);
         rotationSpeed = -MathUtil.clamp(output, -m_speed, m_speed);
-        SmartDashboard.putNumber("PID Output Clamping", rotationSpeed);
-        SmartDashboard.putNumber("PID Output", output);
-
+        
         // rotationSpeed = controller.calculate(result.getBestTarget().getYaw(), 0);
         System.out.println(MessageFormat.format("Yaw: {1}, Rotation Speed {0}", rotationSpeed, yaw));
       } else {

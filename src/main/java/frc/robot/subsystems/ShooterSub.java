@@ -35,9 +35,8 @@ public class ShooterSub extends SubsystemBase {
     @Override
     public void periodic() {
         double output = pidController.calculate(tiltEncoder.getDistance(), ShooterPositionDegree); 
-SmartDashboard.putNumber("PID Output", output);
-SmartDashboard.putNumber("Shooter Distance", tiltEncoder.getDistance());
-        double outputC = MathUtil.clamp(output, -0.25, 0.25);
+
+        double outputC = MathUtil.clamp(output, -0.5, 0.5);
         adjustShooter(outputC);
     }
 

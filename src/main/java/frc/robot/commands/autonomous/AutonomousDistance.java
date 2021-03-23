@@ -23,10 +23,10 @@ public class AutonomousDistance extends SequentialCommandGroup {
   public AutonomousDistance(DriveSub drivetrain) {
     m_drive = drivetrain;
 
-    double driveSpeed = 0.5;
-    double turnSpeed = 0.40;
+    double driveSpeed = 0.40;
+    double turnSpeed = 0.45;
 
-    double waitTime = 0.1;
+    double waitTime = 0.2;
     addCommands(
        // new DriveDistance(driveSpeed, 36, drivetrain).andThen(new WaitCommand(waitTime))
    // new TurnDegreesGyro(turnSpeed, 180, drivetrain).andThen(new WaitCommand(waitTime))
@@ -35,14 +35,17 @@ public class AutonomousDistance extends SequentialCommandGroup {
     // new DriveDistance(driveSpeed, 40, drivetrain).andThen(new WaitCommand(waitTime))
     // new TurnDegreesGyro(turnSpeed, 180, drivetrain).andThen(new WaitCommand(waitTime))
     // new DriveDistance(driveSpeed, 40, drivetrain)
+    
+
+     new DriveDistance(driveSpeed, 48, drivetrain).andThen(new WaitCommand(waitTime)),
+    new TurnDegreesGyro(turnSpeed, -90, drivetrain).andThen(new WaitCommand(waitTime)),
     new DriveDistance(driveSpeed, 40, drivetrain).andThen(new WaitCommand(waitTime)),
-     new TurnDegreesGyro(turnSpeed, -90, drivetrain).andThen(new WaitCommand(waitTime)),
-     new DriveDistance(driveSpeed, 40, drivetrain).andThen(new WaitCommand(waitTime)),
-     new TurnDegreesGyro(turnSpeed, -180, drivetrain).andThen(new WaitCommand(waitTime)),
-     new DriveDistance(driveSpeed, 40, drivetrain).andThen(new WaitCommand(waitTime)),
-     new TurnDegreesGyro(turnSpeed, -270, drivetrain).andThen(new WaitCommand(waitTime)),
-     new DriveDistance(driveSpeed, 40, drivetrain).andThen(new WaitCommand(waitTime)),
-     new TurnDegreesGyro(turnSpeed, -360, drivetrain)
+    new TurnDegreesGyro(turnSpeed, -180, drivetrain).andThen(new WaitCommand(waitTime)),
+    new DriveDistance(driveSpeed, 48, drivetrain).andThen(new WaitCommand(waitTime)),
+    new TurnDegreesGyro(turnSpeed, -270, drivetrain).andThen(new WaitCommand(waitTime)),
+    new DriveDistance(driveSpeed, 40, drivetrain).andThen(new WaitCommand(waitTime)),
+    new TurnDegreesGyro(turnSpeed, -360, drivetrain)
+     
 
     );
   }

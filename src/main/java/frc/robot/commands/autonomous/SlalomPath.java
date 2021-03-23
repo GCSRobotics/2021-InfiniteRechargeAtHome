@@ -15,34 +15,32 @@ import frc.robot.subsystems.DriveSub;
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class SlalomPath extends SequentialCommandGroup {
   /** Creates a new SlalomPath. */
-  private static final double _WAITTIME = 0;
-  private static final double StraightSpeed = 0.38;
-  private static final double TurnSpeed = 0.4;
+  private static final double _WAITTIME = 0.2;
+  private static final double StraightSpeed = 0.4;
+  private static final double TurnSpeed = 0.45;
 
   public SlalomPath(DriveSub drivetrain) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
       new DriveDistance(StraightSpeed, 40, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new TurnDegreesGyro(TurnSpeed, -58, drivetrain).andThen(new WaitCommand(5)), 
+      new TurnDegreesGyro(TurnSpeed, -58, drivetrain).andThen(new WaitCommand(_WAITTIME)), 
       new DriveDistance(StraightSpeed, 82, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new TurnDegreesGyro(TurnSpeed, 0, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new DriveDistance(StraightSpeed, 112, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new TurnDegreesGyro(TurnSpeed, 50, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+      new DriveDistance(StraightSpeed, 116, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+      new TurnDegreesGyro(TurnSpeed, 53, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new DriveDistance(StraightSpeed, 104, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new TurnDegreesGyro(TurnSpeed, 0, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new DriveDistance(StraightSpeed, 20, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+      new DriveDistance(StraightSpeed, 23, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new TurnDegreesGyro(TurnSpeed, -90, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new DriveDistance(StraightSpeed, 93, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new TurnDegreesGyro(TurnSpeed,  -52.5, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+      new DriveDistance(StraightSpeed, 92, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+      new TurnDegreesGyro(TurnSpeed,  -51, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new DriveDistance(StraightSpeed, -126, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new TurnDegreesGyro(TurnSpeed,  0, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new DriveDistance(StraightSpeed, -122,drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new TurnDegreesGyro(TurnSpeed,  55, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new DriveDistance(StraightSpeed, -68, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new TurnDegreesGyro(TurnSpeed,  0, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new DriveDistance(StraightSpeed, -34, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new DriveDistance(StraightSpeed, 1, drivetrain).andThen(new WaitCommand(_WAITTIME))
+      new DriveDistance(StraightSpeed, -68, drivetrain).andThen(new WaitCommand(_WAITTIME))
+      
   
       );
   }
