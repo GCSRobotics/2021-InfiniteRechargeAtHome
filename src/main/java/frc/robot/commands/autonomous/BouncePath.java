@@ -20,7 +20,7 @@ public class BouncePath extends SequentialCommandGroup {
 
   private static final double _WAITTIME = 0.2;
   private static final double StraightSpeed = 0.4;
-  private static final double TurnSpeed = 0.4;
+  private static final double TurnSpeed = 0.45;
 
 
   /** Creates a new BouncePath. */
@@ -30,32 +30,32 @@ public class BouncePath extends SequentialCommandGroup {
     m_drive = drivetrain;
   
     addCommands(
-      new DriveDistance(StraightSpeed, 28, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+      new DriveDistance(StraightSpeed, 32, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       //new DriveDistance(0.5, -30, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       //Turn toward first marker
       new TurnDegreesGyro(TurnSpeed, -75, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new DriveDistance(StraightSpeed, 44, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       // Turn and hit marker
-      new TurnDegreesGyro(TurnSpeed, -123, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new DriveDistance(StraightSpeed, -168, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+      new TurnDegreesGyro(TurnSpeed, -122, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+      new DriveDistance(StraightSpeed, -171, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       //Turn toward second marker
       new TurnDegreesGyro(TurnSpeed, -80, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-      new DriveDistance(StraightSpeed, 139, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+      new DriveDistance(StraightSpeed, 148, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       //Turn and hit second marker
       //new TurnDegreesGyro(0.5, -123, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new TurnDegreesGyro(TurnSpeed, -90, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       //back
-      new DriveDistance(StraightSpeed, -118, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+      new DriveDistance(StraightSpeed, -127, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new TurnDegreesGyro(TurnSpeed, 0, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       //drive forward
-      new DriveDistance(StraightSpeed, 90, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+      new DriveDistance(StraightSpeed, 92, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       new TurnDegreesGyro(TurnSpeed, -90, drivetrain).andThen(new WaitCommand(_WAITTIME)),
       //hit the third marker
-      new DriveDistance(StraightSpeed, 115, drivetrain).andThen(new WaitCommand(_WAITTIME)), 
+      new DriveDistance(StraightSpeed, 117, drivetrain).andThen(new WaitCommand(_WAITTIME)), 
       new TurnDegreesGyro(TurnSpeed, -140, drivetrain).andThen(new WaitCommand(_WAITTIME)),
 
-      new DriveDistance(StraightSpeed, -80, drivetrain),
-      new TurnDegreesGyro(TurnSpeed, -180, drivetrain).andThen(new WaitCommand(_WAITTIME))
+      new DriveDistance(StraightSpeed, -60, drivetrain)
+      //new TurnDegreesGyro(TurnSpeed, -180, drivetrain).andThen(new WaitCommand(_WAITTIME))
 
     );
   }

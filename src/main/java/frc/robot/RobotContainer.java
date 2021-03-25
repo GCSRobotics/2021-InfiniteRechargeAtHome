@@ -58,9 +58,9 @@ public class RobotContainer {
 
         // return new BarrelRacing(drive);
 
-         //return new BouncePath(drive);
+         return new BouncePath(drive);
 
-        return new SlalomPath(drive);
+        //return new SlalomPath(drive);
 
         //return new AutonomousDistance(drive);
 
