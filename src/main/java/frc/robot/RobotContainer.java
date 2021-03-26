@@ -56,9 +56,9 @@ public class RobotContainer {
         //     new WaitCommand(WaitTime), 
         //     new FindPowerCellB(drive));
 
-        // return new BarrelRacing(drive);
+        return new BarrelRacing(drive);
 
-         return new BouncePath(drive);
+         //return new BouncePath(drive);
 
         //return new SlalomPath(drive);
 

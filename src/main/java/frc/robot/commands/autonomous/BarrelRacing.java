@@ -16,7 +16,7 @@ import frc.robot.subsystems.DriveSub;
 public class BarrelRacing extends SequentialCommandGroup {
   /** Creates a new BarrelRacing. */
   private static final double _WAITTIME = 0.1;
-  private static final double StraightSpeed = 0.35;
+  private static final double StraightSpeed = 0.42;
   private static final double TurnSpeed = 0.4;
 
   private final DriveSub m_drive;
@@ -26,31 +26,26 @@ public class BarrelRacing extends SequentialCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
     m_drive = drivetrain;
     addCommands(
-        new DriveDistance(StraightSpeed, 108, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 130, drivetrain).andThen(new WaitCommand(_WAITTIME)),
         new TurnDegreesGyro(TurnSpeed, 60, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 34, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 65, drivetrain).andThen(new WaitCommand(_WAITTIME)),
         new TurnDegreesGyro(TurnSpeed, 180, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 34, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 65, drivetrain).andThen(new WaitCommand(_WAITTIME)),
         new TurnDegreesGyro(TurnSpeed, 90, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 34, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-        new TurnDegreesGyro(TurnSpeed, 340, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 127, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-        new TurnDegreesGyro(TurnSpeed, 40, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, -30, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-        new TurnDegreesGyro(TurnSpeed, 75, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 120, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-        new TurnDegreesGyro(TurnSpeed, 10, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 60, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-        new TurnDegreesGyro(TurnSpeed, -270, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 12, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, -60, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new TurnDegreesGyro(TurnSpeed, 0, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 163, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new TurnDegreesGyro(TurnSpeed, 45, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, -118, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new TurnDegreesGyro(TurnSpeed, 90, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 155, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new TurnDegreesGyro(TurnSpeed, 0, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 103, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new TurnDegreesGyro(TurnSpeed, -90, drivetrain).andThen(new WaitCommand(_WAITTIME)),
+        new DriveDistance(StraightSpeed, 59, drivetrain).andThen(new WaitCommand(_WAITTIME)),
         new TurnDegreesGyro(TurnSpeed, -180, drivetrain).andThen(new WaitCommand(_WAITTIME)),
-        new DriveDistance(StraightSpeed, 312, drivetrain).andThen(new WaitCommand(_WAITTIME))
+        new DriveDistance(StraightSpeed, 270, drivetrain)
         );
-    }
-  
-    @Override
-    public void initialize() {
-      m_drive.reset();
     }
   }  
 
