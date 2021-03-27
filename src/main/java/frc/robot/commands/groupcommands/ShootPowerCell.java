@@ -21,11 +21,11 @@ public class ShootPowerCell extends CommandBase {
   private double degrees;
   private double speed;
 
-  public ShootPowerCell(ShooterSub shooter, IndexSub index, IntakeSub intake, double shooterDegree, double shooterSpeed) {
+  public ShootPowerCell(ShooterSub shooter, IndexSub index, IntakeSub intake, double shooterSpeed) {
     shooterSub = shooter;
     indexSub = index;
     intakeSub = intake;
-    degrees = shooterDegree;
+    // degrees = shooterDegree;
     speed = shooterSpeed;
     addRequirements(indexSub);
     addRequirements(shooterSub);
@@ -35,7 +35,7 @@ public class ShootPowerCell extends CommandBase {
   @Override
   public void initialize() {
     // degrees = SmartDashboard.getNumber("Shooter Degrees", 45);
-    shooterSub.setShooterPosition(degrees);
+    // shooterSub.setShooterPosition(degrees);
     startTime = new Date();
     intakeSub.extendIntake();
   }

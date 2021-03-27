@@ -17,21 +17,22 @@ public class IndexSub extends SubsystemBase {
     
     public IndexSub () {
         addChild("IndexMotor", indexMotor);
+
         colorMatcher.addColorMatch(Constants.YellowTarget);    
     }
 
     @Override
     public void periodic() {
-        Color detectedColor = colorSensor.getColor();
-        ColorMatchResult match = colorMatcher.matchColor(detectedColor);
-        if(match != null){
-            System.out.println("color: " + match.color);
-        }
-        if (match != null && match.color == Constants.YellowTarget) {
-            indexBall();
-        } else {
-            stopIndex();
-        }
+        // Color detectedColor = colorSensor.getColor();
+        // ColorMatchResult match = colorMatcher.matchColor(detectedColor);
+        // if(match != null){
+        //     System.out.println("color: " + match.color);
+        // }
+        // if (match != null && match.color == Constants.YellowTarget) {
+        //     indexBall();
+        // } else {
+        //     stopIndex();
+        // }
   
     }
     

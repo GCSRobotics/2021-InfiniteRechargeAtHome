@@ -7,6 +7,7 @@
 
 package frc.robot;
 
+import frc.robot.commands.indexSub.ReverseIndex;
 import frc.robot.commands.indexSub.RunIndex;
 import frc.robot.commands.intakeSub.*;
 import frc.robot.commands.groupcommands.*;
@@ -37,28 +38,20 @@ public class OI {
   
     private void ButtonActionInit() {
       // Driver buttons.
-      DriverControl.ButtonY.whenPressed(new ExtendIntake(RobotContainer.intake));
-      DriverControl.ButtonA.whenPressed(new RetractIntake(RobotContainer.intake));
-      // DriverControl.ButtonB.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, 45).withTimeout(3));
-      // DriverControl.ButtonX.whileHeld(new RunIndex(RobotContainer.indexer));
-      // DriverControl.ButtonL1.whileHeld(new RunShooter(RobotContainer.shooter));
-      // DriverControl.ButtonR1.whileHeld(new RunIntake(RobotContainer.intake));
-
-//      DriverControl.ButtonR2.whileHeld(new ReverseIntake(RobotContainer.intake));
 
       // Operator buttons.
-      OperatorControl.ButtonY.whenPressed(new ExtendIntake(RobotContainer.intake));
-      OperatorControl.ButtonA.whenPressed(new RetractIntake(RobotContainer.intake));
-      OperatorControl.ButtonX.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -140).withTimeout(5));
-      OperatorControl.ButtonB.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -230).withTimeout(5));
-      OperatorControl.ButtonR1.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -310).withTimeout(5));
-      // OperatorControl.ButtonA.whileHeld(new AutoCenterStart(RobotContainer.Drive, 120, RobotContainer.ShooterLeft, RobotContainer.ShooterRight, RobotContainer.Indexer));
-      // OperatorControl.ButtonY.whileHeld(new StartShooter(RobotContainer.Shooter));
-      OperatorControl.ButtonR1.whileHeld(new RunIntake(RobotContainer.intake));
-      // OperatorControl.ButtonL1.whileHeld(new ReverseIntake(RobotContainer.intake));
-      // OperatorControl.ButtonB.whileHeld(new RunIndex(RobotContainer.Indexer));
-      // OperatorControl.ButtonX.whileHeld(new ReverseIndex(RobotContainer.Indexer));
-      // OperatorControl.ButtonX.whenPressed(new DriveStraight(RobotContainer.Drive, 120.0));
+      OperatorControl.ButtonA.whenPressed(new AdjustAndShoot(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, "green").withTimeout(5));
+      OperatorControl.ButtonY.whenPressed(new AdjustAndShoot(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, "yellow").withTimeout(5));
+      OperatorControl.ButtonX.whenPressed(new AdjustAndShoot(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, "blue").withTimeout(5));
+      OperatorControl.ButtonB.whenPressed(new AdjustAndShoot(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, "red").withTimeout(5));
+      OperatorControl.ButtonOptionL.whileHeld(new RunIndex(RobotContainer.indexer));
+      OperatorControl.ButtonOptionR.whileHeld(new ReverseIndex(RobotContainer.indexer));
+      // OperatorControl.ButtonA.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -140, 0.6).withTimeout(5));
+      // OperatorControl.ButtonY.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -230, 0.6).withTimeout(5));
+      // OperatorControl.ButtonX.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -310, 0.6).withTimeout(5));
+      // OperatorControl.ButtonB.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -310, 0.6).withTimeout(5));
+      OperatorControl.ButtonR1.whileHeld(new ReverseIntake(RobotContainer.intake));
+      OperatorControl.ButtonL1.whileHeld(new RunIntake(RobotContainer.intake));
     }
 
     public BaseController GetDriverControl() {
