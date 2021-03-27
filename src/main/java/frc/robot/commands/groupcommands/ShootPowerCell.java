@@ -18,13 +18,15 @@ public class ShootPowerCell extends CommandBase {
   private ShooterSub shooterSub;
   private IntakeSub intakeSub;
   private Date startTime;
-  private double degrees ;
+  private double degrees;
+  private double speed;
 
-  public ShootPowerCell(ShooterSub shooter, IndexSub index, IntakeSub intake, double shooterDegree) {
+  public ShootPowerCell(ShooterSub shooter, IndexSub index, IntakeSub intake, double shooterDegree, double shooterSpeed) {
     shooterSub = shooter;
     indexSub = index;
     intakeSub = intake;
     degrees = shooterDegree;
+    speed = shooterSpeed;
     addRequirements(indexSub);
     addRequirements(shooterSub);
   }
@@ -41,7 +43,7 @@ public class ShootPowerCell extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    shooterSub.runShooter();
+    shooterSub.runShooter(speed);
     if ((new Date()).getTime() - startTime.getTime() > 2000) {
       indexSub.indexBall();
     }

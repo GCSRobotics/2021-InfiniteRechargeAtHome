@@ -54,6 +54,11 @@ public class ShooterSub extends SubsystemBase {
         this.rightShooter.set(ControlMode.PercentOutput, .6);
     }
 
+    public void runShooter(double speed) {
+        this.leftShooter.set(ControlMode.PercentOutput, speed);
+        this.rightShooter.set(ControlMode.PercentOutput, speed);
+    }
+
     public void stopShooter() {
         this.leftShooter.set(0);
         this.rightShooter.set(0);
