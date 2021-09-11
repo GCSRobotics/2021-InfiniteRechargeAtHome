@@ -10,6 +10,7 @@ package frc.robot;
 import frc.robot.commands.indexSub.ReverseIndex;
 import frc.robot.commands.indexSub.RunIndex;
 import frc.robot.commands.intakeSub.*;
+import frc.robot.commands.climb.Climb;
 import frc.robot.commands.groupcommands.*;
 import frc.robot.commands.shooterSub.RunShooter;
 import frc.robot.controllers.BaseController;
@@ -38,20 +39,26 @@ public class OI {
   
     private void ButtonActionInit() {
       // Driver buttons.
+      DriverControl.ButtonY.whileHeld(new Climb(RobotContainer.Climber));
+      
 
       // Operator buttons.
-      OperatorControl.ButtonA.whenPressed(new AdjustAndShoot(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, "green").withTimeout(5));
-      OperatorControl.ButtonY.whenPressed(new AdjustAndShoot(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, "yellow").withTimeout(5));
-      OperatorControl.ButtonX.whenPressed(new AdjustAndShoot(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, "blue").withTimeout(5));
-      OperatorControl.ButtonB.whenPressed(new AdjustAndShoot(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, "red").withTimeout(5));
-      OperatorControl.ButtonOptionL.whileHeld(new RunIndex(RobotContainer.indexer));
-      OperatorControl.ButtonOptionR.whileHeld(new ReverseIndex(RobotContainer.indexer));
+      OperatorControl.ButtonOptionL.whenPressed(new ExtendIntake(RobotContainer.intake));
+      OperatorControl.ButtonOptionR.whileHeld(new RetractIntake(RobotContainer.intake));
+      OperatorControl.ButtonL1.whileHeld(new ReverseIntake(RobotContainer.intake));
+      OperatorControl.ButtonR1.whileHeld(new RunIntake(RobotContainer.intake));
+      OperatorControl.ButtonX.whileHeld(new ReverseIndex(RobotContainer.indexer));
+      OperatorControl.ButtonB.whileHeld(new RunIndex(RobotContainer.indexer));
+
+
+      // OperatorControl.ButtonA.whenPressed(new AdjustAndShoot(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, "green").withTimeout(5));
+      // OperatorControl.ButtonY.whenPressed(new AdjustAndShoot(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, "yellow").withTimeout(5));
+      // OperatorControl.ButtonX.whenPressed(new AdjustAndShoot(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, "blue").withTimeout(5));
+      // OperatorControl.ButtonB.whenPressed(new AdjustAndShoot(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, "red").withTimeout(5));
       // OperatorControl.ButtonA.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -140, 0.6).withTimeout(5));
       // OperatorControl.ButtonY.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -230, 0.6).withTimeout(5));
       // OperatorControl.ButtonX.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -310, 0.6).withTimeout(5));
       // OperatorControl.ButtonB.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, -310, 0.6).withTimeout(5));
-      OperatorControl.ButtonR1.whileHeld(new ReverseIntake(RobotContainer.intake));
-      OperatorControl.ButtonL1.whileHeld(new RunIntake(RobotContainer.intake));
     }
 
     public BaseController GetDriverControl() {

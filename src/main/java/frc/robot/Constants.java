@@ -11,12 +11,14 @@ public class Constants {
     public final static int IntakeMotor = 5;
     public final static int leftShooterMotor = 6;
     public final static int rightShooterMotor = 7;
-    public final static int shooterAdjustment = 8;
+    // public final static int shooterAdjustment = 8;
 
     public final static int leftFrontDriveMotor = 10;
     public final static int leftRearDriveMotor = 11;
     public final static int RightFrontDriveMotor = 12;
     public final static int RightRearDriveMotor = 13;
+
+    public final static int ClimberMotor = 8;
 
     // Controller
     public final static int DriveJoystick = 0;

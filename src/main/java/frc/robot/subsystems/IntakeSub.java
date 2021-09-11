@@ -24,9 +24,9 @@ public class IntakeSub extends SubsystemBase {
     }
      
     public void runIntake(){
-        if (DoubleSolenoid.Value.kForward == solenoid.get()) {
+        // if (DoubleSolenoid.Value.kForward == solenoid.get()) {
             IntakeMotor.set(-.5);
-        }
+        // }
     }
      
     public void reverseIntake(){

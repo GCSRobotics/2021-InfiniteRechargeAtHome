@@ -15,7 +15,7 @@ public class ShooterSub extends SubsystemBase {
     private String area = "green";
     private final WPI_TalonSRX leftShooter = new WPI_TalonSRX(Constants.leftShooterMotor);
     private final WPI_TalonSRX rightShooter = new WPI_TalonSRX(Constants.rightShooterMotor);
-    private final WPI_VictorSPX shooterAdjustment = new WPI_VictorSPX(Constants.shooterAdjustment);
+    // private final WPI_VictorSPX shooterAdjustment = new WPI_VictorSPX(Constants.shooterAdjustment);
     // private final Encoder tiltEncoder = new Encoder(Constants.ShooterEncoderA, Constants.ShooterEncoderB);
     // private final PIDController pidController = new PIDController(0.07, 0, .005);
     // private double ShooterPositionDegree = 0;
@@ -46,7 +46,7 @@ public class ShooterSub extends SubsystemBase {
 
     public void adjustShooter(double speed) 
     {
-        this.shooterAdjustment.set(ControlMode.PercentOutput, speed);
+        // this.shooterAdjustment.set(ControlMode.PercentOutput, speed);
     }
 
     public String getArea() {

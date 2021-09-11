@@ -55,7 +55,12 @@ public class DriveWithController extends CommandBase {
   public void execute() {
 
     double forwardSpeed = driveController.GetAxis_LeftY();
-    double multiplier = .70;
+   
+    double d = 0.70;
+    double speedMultiplier = d;
+    double rotMultiplier = d;
+
+   
     double rotationSpeed;
 
     if (driveController.ButtonA.get()) {
@@ -100,9 +105,9 @@ public class DriveWithController extends CommandBase {
 
     // driveSub.tankDrive(driveController.GetAxis_LeftY() * -.60, driveController.GetAxis_RightY() * -.60);
     if (driveController.ButtonL1.get()) {
-      multiplier = 1.0;
+      speedMultiplier = 1.0;
     }
-    driveSub.arcadeDrive(-forwardSpeed * multiplier , rotationSpeed *.6);
+    driveSub.arcadeDrive(-forwardSpeed * speedMultiplier , rotationSpeed * rotMultiplier);
     ;
   }
 

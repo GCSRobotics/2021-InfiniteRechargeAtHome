@@ -24,6 +24,8 @@ public class RobotContainer {
     public static IndexSub indexer = new IndexSub();
     // Shooter Subsystems
     public static ShooterSub shooter = new ShooterSub();
+    //Climber Subsystem
+    public static ClimberSub Climber = new ClimberSub();
     // Operator Interface
     private static OI oi = new OI();
 
