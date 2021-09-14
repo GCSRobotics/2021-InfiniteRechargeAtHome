@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj2.command.WaitCommand;
 import frc.robot.commands.autonomous.AutonomousDistance;
 import frc.robot.commands.autonomous.BarrelRacing;
 import frc.robot.commands.autonomous.BouncePath;
+import frc.robot.commands.autonomous.ShootandDrive;
 import frc.robot.commands.autonomous.SlalomPath;
 import frc.robot.commands.autonomous.searcha.FindPowerCellA;
 import frc.robot.commands.autonomous.searchb.FindPowerCellB;
@@ -42,31 +43,6 @@ public class RobotContainer {
 
     // Autonomous Commands
     public static Command GetAutonomousCommand() {
-        double WaitTime = 0.1;
-        double StraightSpeed = 0.75;
-        double TurnSpeed = 0.7;
-
-        // return new AutonomousDistance(drive);
-
-        // return new SequentialCommandGroup(
-        //     new DriveDistance(StraightSpeed, 150, drive),
-        //     new WaitCommand(WaitTime), 
-        //     new FindPowerCellA(drive));
-
-        // return new SequentialCommandGroup(
-        //     new DriveDistance(StraightSpeed, 162, drive),
-        //     new WaitCommand(WaitTime), 
-        //     new TurnDegreesGyro(TurnSpeed, -90, drive),
-        //     new WaitCommand(WaitTime), 
-        //     new FindPowerCellB(drive));
-
-        // return new BarrelRacing(drive);
-
-         //return new BouncePath(drive);
-
-        //return new SlalomPath(drive);
-
-        return new AutonomousDistance(drive);
-
+        return new ShootandDrive(drive, shooter, indexer, intake);
     }
 }
