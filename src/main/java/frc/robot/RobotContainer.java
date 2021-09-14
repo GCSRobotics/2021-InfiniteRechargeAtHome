@@ -58,13 +58,13 @@ public class RobotContainer {
         //     new WaitCommand(WaitTime), 
         //     new FindPowerCellB(drive));
 
-        return new BarrelRacing(drive);
+        // return new BarrelRacing(drive);
 
          //return new BouncePath(drive);
 
         //return new SlalomPath(drive);
 
-        //return new AutonomousDistance(drive);
+        return new AutonomousDistance(drive);
 
     }
 }

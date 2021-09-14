@@ -11,7 +11,7 @@ public class RunShooter extends CommandBase {
   private final ShooterSub shooter;
   
   /** Creates a new RunShooter. */
-  public RunShooter(ShooterSub subsystem, double time) {
+  public RunShooter(ShooterSub subsystem) {
     shooter = subsystem;
     // Use addRequirements() here to declare subsystem dependencies.
   }

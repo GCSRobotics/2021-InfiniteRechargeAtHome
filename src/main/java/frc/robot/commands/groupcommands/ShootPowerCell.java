@@ -31,6 +31,16 @@ public class ShootPowerCell extends CommandBase {
     addRequirements(shooterSub);
   }
 
+  public ShootPowerCell(ShooterSub shooter, IndexSub index, IntakeSub intake) {
+    shooterSub = shooter;
+    indexSub = index;
+    intakeSub = intake;
+    // degrees = shooterDegree;
+    speed = 0.6;
+    addRequirements(indexSub);
+    addRequirements(shooterSub);
+  }
+
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
