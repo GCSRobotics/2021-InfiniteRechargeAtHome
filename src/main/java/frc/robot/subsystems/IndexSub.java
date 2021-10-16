@@ -40,6 +40,10 @@ public class IndexSub extends SubsystemBase {
     public void indexBall(){
         indexMotor.set(-.25);
     }
+ 
+    public void indexShootingBall(){
+        indexMotor.set(-.35);
+    }
     
     //Index motor backward speed
     public void reverseIndex(){

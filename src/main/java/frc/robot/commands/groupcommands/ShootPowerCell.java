@@ -36,7 +36,7 @@ public class ShootPowerCell extends CommandBase {
     indexSub = index;
     intakeSub = intake;
     // degrees = shooterDegree;
-    speed = 0.6;
+    speed = .75;
     addRequirements(indexSub);
     addRequirements(shooterSub);
   }
@@ -54,8 +54,8 @@ public class ShootPowerCell extends CommandBase {
   @Override
   public void execute() {
     shooterSub.runShooter(speed);
-    if ((new Date()).getTime() - startTime.getTime() > 2000) {
-      indexSub.indexBall();
+    if ((new Date()).getTime() - startTime.getTime() > 250) {
+      indexSub.indexShootingBall();
     }
   }
 

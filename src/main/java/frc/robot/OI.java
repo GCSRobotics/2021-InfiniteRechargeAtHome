@@ -49,7 +49,7 @@ public class OI {
       OperatorControl.ButtonR1.whileHeld(new RunIntake(RobotContainer.intake));
       OperatorControl.ButtonX.whileHeld(new ReverseIndex(RobotContainer.indexer));
       OperatorControl.ButtonB.whileHeld(new RunIndex(RobotContainer.indexer));
-      OperatorControl.ButtonY.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake).withTimeout(5));
+      OperatorControl.ButtonY.whenPressed(new ShootPowerCell(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake).withTimeout(2.5));
 
 
       // OperatorControl.ButtonA.whenPressed(new AdjustAndShoot(RobotContainer.shooter, RobotContainer.indexer, RobotContainer.intake, "green").withTimeout(5));

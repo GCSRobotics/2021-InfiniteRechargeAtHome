@@ -107,6 +107,9 @@ public class DriveWithController extends CommandBase {
     if (driveController.ButtonL1.get()) {
       speedMultiplier = 1.0;
     }
+    if (driveController.ButtonR1.get()) {
+      rotMultiplier = .25;
+    }
     driveSub.arcadeDrive(-forwardSpeed * speedMultiplier , rotationSpeed * rotMultiplier);
     ;
   }
